@@ -272,7 +272,7 @@
   opacity: 0;
   transform: translateX(120px);
   animation: slideInFromRight 1s ease-out forwards;
-  animation-play-state: paused; /* Will be triggered by JavaScript */
+  animation-play-state: paused;
 }
 
 /* Stagger the animation for each card */

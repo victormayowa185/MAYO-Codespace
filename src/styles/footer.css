@@ -1,6 +1,6 @@
 /* src/components/Footer.css */
 .footer {
-  background: #333333;
+  background: black;
   color: white;
   padding: 4rem 2rem 2rem;
   width: 100%;
@@ -40,6 +40,7 @@
 }
 
 .footer-logo .logo-icon {
+  font-family: mulish;
   font-size: 1.8rem;
   animation: spin 20s linear infinite;
 }

@@ -73,7 +73,7 @@ const HomePage: React.FC = () => {
         {/* Hero Container Overlay (on top of right side) */}
         <div className="hero-overlay-container">
           <div className="hero-card">
-            <div className="hero-badge">GSoC 2024 PROJECT</div>
+            <div className="hero-badge">GSoC 2026 PROJECT</div>
             <h1 className="hero-title">
               Professional <span className="highlight">Elegant</span>
               <br />

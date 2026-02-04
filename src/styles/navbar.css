@@ -30,6 +30,7 @@
 }
 
 .logo-icon {
+  font-family: mulish;
   font-size: 1.8rem;
   animation: spin 20s linear infinite;
 }

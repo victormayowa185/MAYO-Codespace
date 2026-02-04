@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           {/* Left Column: Logo & Name */}
           <div className="footer-left">
             <div className="footer-logo">
-              <span className="logo-icon">⚛️</span>
+              <span className="logo-icon">M</span>
               <span className="logo-text">CodeWorkspace</span>
             </div>
             <p className="footer-tagline">
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
           
           {/* Copyright */}
           <div className="footer-copyright">
-            © 2024 CodeWorkspace • Open Source • Built for Google Summer of Code
+            © 2026 MAYO Codespace • Open Source • Victor Mayowa
           </div>
           
         </div>
