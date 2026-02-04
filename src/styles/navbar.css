@@ -1,0 +1,98 @@
+/* src/components/Navbar.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #f8f9fa;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 0 2rem;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: mulish;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333333;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #666666;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  padding: 8px 0;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #007acc;
+}
+
+.nav-link.active {
+  color: #007acc;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #007acc;
+  border-radius: 1px;
+}
+
+.github-link {
+  background: #333333;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-left: 1rem;
+}
+
+.github-link:hover {
+  background: #007acc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Add hamburger menu later */
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+  }
+}
