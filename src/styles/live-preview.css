@@ -6,7 +6,7 @@
   border-radius: 12px;
   overflow: hidden;
   background: white;
-  border: 2px solid var(--primary);
+  border: 1px solid rgba(0, 0, 0, 0.336);
   box-shadow: var(--shadow);
 }
 
@@ -59,7 +59,7 @@
 }
 
 .status {
-  background: rgba(255, 255, 255, 0.2);
+  background: black;
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.75rem;

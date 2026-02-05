@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MdSpeed } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
+import { IoMdRocket } from "react-icons/io";
+import { RiGalleryFill } from "react-icons/ri";
 import { RiShare2Line } from "react-icons/ri";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -90,11 +92,11 @@ const HomePage: React.FC = () => {
 
             <div className="hero-actions">
               <Link to="/workspace" className="btn btn-primary">
-                <span className="btn-icon">🚀</span>
+                <IoMdRocket />
                 Launch Workspace
               </Link>
               <Link to="/showcase" className="btn btn-secondary">
-                <span className="btn-icon">📂</span>
+               <RiGalleryFill />
                 View Examples
               </Link>
             </div>

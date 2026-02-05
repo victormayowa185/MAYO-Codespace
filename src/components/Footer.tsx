@@ -1,6 +1,7 @@
 // src/components/Footer.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TbHexagonLetterM } from "react-icons/tb";
 import '../styles/Footer.css';
 
 const Footer: React.FC = () => {
@@ -14,8 +15,10 @@ const Footer: React.FC = () => {
           {/* Left Column: Logo & Name */}
           <div className="footer-left">
             <div className="footer-logo">
-              <span className="logo-icon">M</span>
-              <span className="logo-text">CodeWorkspace</span>
+              <span className="logo-icon">
+                <TbHexagonLetterM />
+              </span>
+              <span className="logo-text">MAYO Codespace</span>
             </div>
             <p className="footer-tagline">
               Professional React development environment built for Google Summer of Code 2026

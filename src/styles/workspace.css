@@ -77,11 +77,9 @@
   min-width: 0; /* Important for flexbox shrinking */
   display: flex;
   flex-direction: column;
-  background: var(--bg-white);
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
 }
 
 .dark-mode .code-editor-panel {
@@ -96,7 +94,7 @@
   display: flex;
   flex-direction: column;
   min-width: 400px; /* Fixed minimum preview width */
-  max-width: 50%; /* Don't let preview take more than half */
+  max-width: 10%; /* Don't let preview take more than half */
   background: white;
   border-radius: 12px;
   overflow: hidden;

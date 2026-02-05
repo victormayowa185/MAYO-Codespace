@@ -1,6 +1,7 @@
 // src/components/Navbar.tsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { TbHexagonLetterM } from "react-icons/tb";
 import '../styles/Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -15,7 +16,7 @@ const Navbar: React.FC = () => {
       <div className="nav-container">
         <div className="nav-logo">
           <span className="logo-icon">
-            M
+           <TbHexagonLetterM />
           </span>
           <span className="logo-text">MAYO Codespace</span>
         </div>
