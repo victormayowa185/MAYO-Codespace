@@ -87,13 +87,14 @@
 }
 
 .hero-card {
-  background: rgba(0, 122, 204, 0.4);
+  background: rgba(24, 12, 133, 0.144);
   backdrop-filter: blur(20px);
   padding: 25px 30px;
   box-shadow: var(--shadow);
-  animation: slideIn 0.8s ease-out;
+  animation: slideIn 1s ease-out;
   position: relative;
   height: 500px;
+  border-radius: 8px;
 }
 
 @keyframes slideIn {
@@ -121,7 +122,7 @@
 
 .hero-title {
   font-family: mulish;
-  font-size: 2.5rem;
+  font-size: 2.9rem;
   line-height: 1.1;
   margin-bottom: 20px;
   font-weight: 800;
@@ -137,23 +138,10 @@
 
 .hero-description {
   font-family: mulish;
-  font-size: 1.1rem;
+  font-size: 1.01rem;
   line-height: 1.6;
   color: black;
   margin-bottom: 32px;
-}
-
-
-.feature-icon {
-  width: 36px;
-  height: 36px;
-  background: rgba(0, 122, 204, 0.1);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: var(--primary);
 }
 
 /* Hero Actions */
@@ -196,7 +184,7 @@
   font-family: mulish;
   background: transparent;
   color: black;
-  border: 2px solid whitesmoke;
+  border: 1px solid whitesmoke;
 }
 
 .btn-secondary:hover {
@@ -209,18 +197,15 @@
   font-size: 1.2rem;
 }
 
-/* ====== ADDED ANIMATION STYLES ====== */
-
-/* Features Section (Below video) */
 .features-section {
   padding: 6rem 2rem;
-  background: var(--surface);
+  background: #f8f9fa;
   position: relative;
   z-index: 10;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  overflow: hidden; /* Prevent horizontal scroll during animation */
+  overflow: hidden;
 }
 
 .section-container {
@@ -253,7 +238,7 @@
 }
 
 .features-grid {
-  border: 1px solid grey;
+  border: 1px solid rgba(128, 128, 128, 0.322);
   border-radius: 10px;
   padding: 10px;
   display: grid;
@@ -271,8 +256,20 @@
   align-items: center;
   opacity: 0;
   transform: translateX(120px);
-  animation: slideInFromRight 1s ease-out forwards;
+  animation: slideInFromRight 0.6s ease-out forwards;
   animation-play-state: paused;
+}
+
+.feature-title1{
+  color: rgb(0, 164, 209);
+}
+
+.feature-title2{
+  color: rgb(224, 72, 17);
+}
+
+.feature-title3{
+  color: rgb(11, 153, 11);
 }
 
 /* Stagger the animation for each card */

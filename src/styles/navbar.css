@@ -32,7 +32,7 @@
 .logo-icon {
   font-family: mulish;
   font-size: 1.8rem;
-  animation: spin 20s linear infinite;
+  animation: spin 7s linear infinite;
 }
 
 @keyframes spin {

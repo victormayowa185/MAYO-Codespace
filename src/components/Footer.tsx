@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
               <span className="logo-text">CodeWorkspace</span>
             </div>
             <p className="footer-tagline">
-              Professional React development environment built for Google Summer of Code 2024
+              Professional React development environment built for Google Summer of Code 2026
             </p>
           </div>
           

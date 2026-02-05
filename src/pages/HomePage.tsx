@@ -1,6 +1,9 @@
 // src/pages/HomePage.tsx
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { MdSpeed } from "react-icons/md";
+import { FaTools } from "react-icons/fa";
+import { RiShare2Line } from "react-icons/ri";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/HomePage.css';
@@ -29,7 +32,7 @@ const HomePage: React.FC = () => {
     // Observe all animated elements
     if (sectionTitleRef.current) observer.observe(sectionTitleRef.current);
     if (sectionSubtitleRef.current) observer.observe(sectionSubtitleRef.current);
-    
+
     // Observe all feature cards
     featureCardsRef.current.forEach((card) => {
       if (card) observer.observe(card);
@@ -60,7 +63,7 @@ const HomePage: React.FC = () => {
               muted
               playsInline
               className="hero-video"
-              poster="/videos/poster.jpg" // Optional: Add a poster image
+              poster="/videos/poster.jpg"
             >
               <source src="/video.mp4" type="video/mp4" />
               <source src="/videos/coding-hero.webm" type="video/webm" />
@@ -75,7 +78,7 @@ const HomePage: React.FC = () => {
           <div className="hero-card">
             <div className="hero-badge">GSoC 2026 PROJECT</div>
             <h1 className="hero-title">
-              Professional <span className="highlight">Elegant</span>
+              Professional, <span className="highlight">Elegant,</span>
               <br />
               Code
             </h1>
@@ -103,37 +106,39 @@ const HomePage: React.FC = () => {
       <section className="features-section">
         <div className="section-container">
           <h2 ref={sectionTitleRef} className="section-title">Why Choose MAYO Codespace?</h2>
-          
+
           <div ref={sectionSubtitleRef} className="section-subtitle">
             MAYO Codespace redefines modern web development by combining enterprise-grade performance with an intuitive, zero-configuration workflow. Our platform is engineered for developers who demand both speed and precision—offering real-time collaboration, intelligent code completion, and seamless integration with your favorite tools and frameworks. Every feature is meticulously designed with accessibility at its core, ensuring an inclusive environment where developers of all backgrounds can innovate, prototype, and deploy with confidence. Experience a development ecosystem that not only keeps pace with your creativity but accelerates it.
           </div>
 
           <div className="features-grid">
             <div className="feature-card" ref={(el) => addToRefs(el, 0)}>
-              <h3 className="feature-title">Instant Feedback</h3>
+              <h3 className="feature-title1">Instant Feedback</h3>
               <p className="feature-description">
                 See your React components update in real-time as you type.
                 No manual refresh required.
               </p>
-              <div className="feature-icon">⚡</div>
+
+              <MdSpeed />
+              
             </div>
 
             <div className="feature-card" ref={(el) => addToRefs(el, 1)}>
-              <h3 className="feature-title">Professional Tools</h3>
+              <h3 className="feature-title2">Professional Tools</h3>
               <p className="feature-description">
                 Built-in code editor with syntax highlighting, auto-completion,
                 and error detection.
               </p>
-              <div className="feature-icon">🔧</div>
+              <FaTools />
             </div>
 
             <div className="feature-card" ref={(el) => addToRefs(el, 2)}>
-              <h3 className="feature-title">Share Anywhere</h3>
+              <h3 className="feature-title3">Share Anywhere</h3>
               <p className="feature-description">
                 Generate shareable URLs for your projects. Collaborate with
                 team members instantly.
               </p>
-              <div className="feature-icon">🌐</div>
+              <RiShare2Line />
             </div>
           </div>
         </div>

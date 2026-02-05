@@ -1,0 +1,253 @@
+/* src/styles/workspace.css */
+:root {
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --bg-dark: #1a1a1a;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #ffffff;
+  --primary: #007acc;
+  --primary-dark: #005d99;
+  --primary-light: rgba(0, 122, 204, 0.1);
+  --border: #e0e0e0;
+  --border-dark: #333333;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+}
+
+.workspace-page {
+  min-height: 100vh;
+  background: var(--bg-light);
+  font-family: 'Mulish', sans-serif;
+  transition: background 0.3s;
+  overflow: hidden;
+}
+
+.workspace-page.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+/* Workspace Container */
+.workspace-container {
+  display: flex;
+  height: calc(100vh - 70px); /* Subtract navbar height */
+  margin-top: 70px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Mulish', sans-serif;
+}
+
+.workspace-container.fullscreen {
+  height: 100vh;
+  margin-top: 0;
+}
+
+/* REMOVE or COMMENT OUT the left panel styles since we don't need it */
+.left-panel {
+  display: none; /* Completely hide left panel */
+}
+
+
+.main-coding-area {
+  display: none; /* We're using split-layout instead */
+}
+
+/* Hide the old preview panel */
+.preview-panel {
+  display: none !important; /* Force hide the overlay preview */
+}
+
+/* ========== SPLIT LAYOUT ========== */
+
+/* Split Layout Container */
+.split-layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
+  padding: 20px;
+}
+
+.code-editor-panel {
+  flex: 1;
+  min-width: 0; /* Important for flexbox shrinking */
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-white);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.dark-mode .code-editor-panel {
+  background: #1e1e1e;
+  border-color: var(--border-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.live-preview-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px; /* Fixed minimum preview width */
+  max-width: 50%; /* Don't let preview take more than half */
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.dark-mode .live-preview-panel {
+  background: #1a1a1a;
+  border-color: var(--border-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Fullscreen adjustments */
+.fullscreen .split-layout {
+  padding: 0;
+  gap: 0;
+}
+
+.fullscreen .code-editor-panel,
+.fullscreen .live-preview-panel {
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.fullscreen .live-preview-panel {
+  border-left: 1px solid var(--border);
+}
+
+.dark-mode.fullscreen .live-preview-panel {
+  border-left-color: var(--border-dark);
+}
+
+/* ========== LIVE PREVIEW STYLES ========== */
+
+/* Live Preview Loading State */
+.loading-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  font-family: 'Mulish', sans-serif;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 122, 204, 0.2);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Iframe styling */
+.preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+  transition: opacity 0.3s;
+}
+
+.dark-mode .preview-iframe {
+  background: #1a1a1a;
+}
+
+/* Live status animation */
+.status {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  animation: live-glow 0.4s infinite alternate;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+  font-family: 'Mulish', sans-serif;
+}
+
+@keyframes live-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+    transform: scale(0.98);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.8), 0 0 30px rgba(46, 204, 113, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+/* For react-icons SVG styling */
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: all 0.3s ease;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 1024px) {
+  .split-layout {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .code-editor-panel,
+  .live-preview-panel {
+    min-width: 100%;
+    max-width: 100%;
+    height: 50vh;
+  }
+  
+  .live-preview-panel {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+  
+  .dark-mode .live-preview-panel {
+    border-top-color: var(--border-dark);
+  }
+}
+
+@media (max-width: 768px) {
+  .split-layout {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .code-editor-panel,
+  .live-preview-panel {
+    height: calc(50vh - 10px);
+  }
+  
+  .live-preview-panel {
+    min-width: 100%; /* On mobile, take full width */
+  }
+}
