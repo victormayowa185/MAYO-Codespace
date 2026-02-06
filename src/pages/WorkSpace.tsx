@@ -1,12 +1,10 @@
-// src/pages/WorkspacePage.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import LivePreview from '../components/LivePreview';
 import CodeEditor from '../components/CodeEditor';
 import '../styles/workspace.css';
 
 const WorkspacePage: React.FC = () => {
-  // DECLARE isDarkMode FIRST before using it anywhere
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isPreviewVisible, setIsPreviewVisible] = useState(true);
@@ -77,6 +75,40 @@ button:hover {
 </html>`
   });
 
+  // State for resizable panels
+  const [editorWidth, setEditorWidth] = useState(50); // percentage
+  const isResizing = useRef(false);
+  const splitContainerRef = useRef<HTMLDivElement>(null);
+
+  // Handle mouse down for resizing
+  const handleResizeStart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    isResizing.current = true;
+    document.addEventListener('mousemove', handleResizeMove);
+    document.addEventListener('mouseup', handleResizeEnd);
+  };
+
+  // Handle resizing movement
+  const handleResizeMove = (e: MouseEvent) => {
+    if (!isResizing.current || !splitContainerRef.current) return;
+
+    const containerRect = splitContainerRef.current.getBoundingClientRect();
+    const containerWidth = containerRect.width;
+    const mouseX = e.clientX - containerRect.left;
+    const newWidth = (mouseX / containerWidth) * 100;
+
+    // Set bounds (min 20%, max 80%)
+    const boundedWidth = Math.max(20, Math.min(80, newWidth));
+    setEditorWidth(boundedWidth);
+  };
+
+  // Handle resizing end
+  const handleResizeEnd = () => {
+    isResizing.current = false;
+    document.removeEventListener('mousemove', handleResizeMove);
+    document.removeEventListener('mouseup', handleResizeEnd);
+  };
+
   // Handle fullscreen toggle
   const handleFullscreenToggle = () => {
     if (!isFullscreen) {
@@ -116,17 +148,24 @@ button:hover {
 
   return (
     <div className={`workspace-page ${isDarkMode ? 'dark-mode' : ''}`}>
-      {/* Navigation Bar (hidden in fullscreen) */}
       {!isFullscreen && <Navbar />}
 
-      {/* Main Workspace Container */}
       <div className={`workspace-container ${isFullscreen ? 'fullscreen' : ''}`}>
         
-        {/* Split Layout Container */}
-        <div className="split-layout">
+        <div 
+          className={`split-layout ${!isPreviewVisible ? 'single-panel' : ''}`}
+          ref={splitContainerRef}
+          style={{ cursor: isResizing.current ? 'col-resize' : 'default' }}
+        >
           
-          {/* Code Editor Panel (Left side) */}
-          <div className="code-editor-panel">
+          {/* Code Editor Panel */}
+          <div 
+            className="code-editor-panel"
+            style={{ 
+              width: isPreviewVisible ? `${editorWidth}%` : '100%',
+              height: isPreviewVisible ? '100%' : '100%'
+            }}
+          >
             <CodeEditor 
               code={code}
               onCodeChange={handleCodeChange}
@@ -139,9 +178,20 @@ button:hover {
             />
           </div>
 
-          {/* Live Preview Panel (Right side) - Only show when visible */}
+          {/* Resizer handle */}
           {isPreviewVisible && (
-            <div className="live-preview-panel">
+            <div 
+              className="resizer"
+              onMouseDown={handleResizeStart}
+            />
+          )}
+
+          {/* Live Preview Panel */}
+          {isPreviewVisible && (
+            <div 
+              className="live-preview-panel"
+              style={{ width: `${100 - editorWidth}%` }}
+            >
               <LivePreview 
                 jsxCode={code.jsx}
                 cssCode={code.css}

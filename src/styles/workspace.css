@@ -1,4 +1,3 @@
-/* src/styles/workspace.css */
 :root {
   --bg-light: #f8f9fa;
   --bg-white: #ffffff;
@@ -46,21 +45,6 @@
   margin-top: 0;
 }
 
-/* REMOVE or COMMENT OUT the left panel styles since we don't need it */
-.left-panel {
-  display: none; /* Completely hide left panel */
-}
-
-
-.main-coding-area {
-  display: none; /* We're using split-layout instead */
-}
-
-/* Hide the old preview panel */
-.preview-panel {
-  display: none !important; /* Force hide the overlay preview */
-}
-
 /* ========== SPLIT LAYOUT ========== */
 
 /* Split Layout Container */
@@ -68,18 +52,77 @@
   display: flex;
   height: 100%;
   width: 100%;
-  gap: 20px;
   padding: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Single panel layout when preview is hidden */
+.split-layout.single-panel {
+  padding: 0;
+}
+
+.split-layout.single-panel .code-editor-panel {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  flex: 1;
+}
+
+/* Resizer handle */
+.resizer {
+  width: 8px;
+  height: 100%;
+  background: var(--border);
+  cursor: col-resize;
+  z-index: 100;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  margin: 0 8px;
+}
+
+.resizer:hover,
+.resizer:active {
+  background: var(--primary);
+}
+
+.resizer::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 40px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+.dark-mode .resizer {
+  background: var(--border-dark);
+}
+
+.dark-mode .resizer:hover,
+.dark-mode .resizer:active {
+  background: var(--primary);
+}
+
+.dark-mode .resizer::before {
+  background: var(--text-light);
 }
 
 .code-editor-panel {
-  flex: 1;
-  min-width: 0; /* Important for flexbox shrinking */
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
+  transition: width 0.1s ease; /* Smooth resize */
 }
 
 .dark-mode .code-editor-panel {
@@ -89,17 +132,15 @@
 }
 
 .live-preview-panel {
-  flex: 1;
-  min-width: 0;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  min-width: 400px; /* Fixed minimum preview width */
-  max-width: 10%; /* Don't let preview take more than half */
   background: white;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  transition: width 0.1s ease; /* Smooth resize */
 }
 
 .dark-mode .live-preview-panel {
@@ -111,7 +152,6 @@
 /* Fullscreen adjustments */
 .fullscreen .split-layout {
   padding: 0;
-  gap: 0;
 }
 
 .fullscreen .code-editor-panel,
@@ -121,92 +161,29 @@
   box-shadow: none;
 }
 
-.fullscreen .live-preview-panel {
-  border-left: 1px solid var(--border);
-}
-
-.dark-mode.fullscreen .live-preview-panel {
-  border-left-color: var(--border-dark);
-}
-
-/* ========== LIVE PREVIEW STYLES ========== */
-
-/* Live Preview Loading State */
-.loading-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 10;
-  font-family: 'Mulish', sans-serif;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 122, 204, 0.2);
-  border-radius: 50%;
-  border-top: 4px solid var(--primary);
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 10px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Iframe styling */
-.preview-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: white;
-  transition: opacity 0.3s;
-}
-
-.dark-mode .preview-iframe {
-  background: #1a1a1a;
-}
-
-/* Live status animation */
+/* Update Live status to use blue color instead of green */
 .status {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  background: (linear-gradient5deg, green, black); /* Changed from green to blue */
   padding: 4px 16px;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  animation: live-glow 0.4s infinite alternate;
-  box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+  animation: live-glow 0.2s infinite alternate;
+  box-shadow: 0 0 10px rgba(0, 122, 204, 0.5); /* Blue glow */
   font-family: 'Mulish', sans-serif;
 }
 
 @keyframes live-glow {
   0% {
-    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
     transform: scale(0.98);
   }
   100% {
-    box-shadow: 0 0 15px rgba(46, 204, 113, 0.8), 0 0 30px rgba(46, 204, 113, 0.3);
+    box-shadow: 0 0 15px rgba(0, 122, 204, 0.8), 0 0 30px rgba(0, 122, 204, 0.3);
     transform: scale(1.02);
   }
-}
-
-/* For react-icons SVG styling */
-.btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-icon svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  transition: all 0.3s ease;
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
@@ -214,38 +191,52 @@
 @media (max-width: 1024px) {
   .split-layout {
     flex-direction: column;
-    gap: 10px;
   }
   
-  .code-editor-panel,
+  .split-layout.single-panel {
+    padding: 0;
+  }
+  
+  .code-editor-panel:not(:only-child),
   .live-preview-panel {
-    min-width: 100%;
-    max-width: 100%;
+    width: 100% !important;
     height: 50vh;
   }
   
-  .live-preview-panel {
-    border-left: none;
-    border-top: 1px solid var(--border);
+  /* When preview is hidden on mobile, code editor takes full screen */
+  .split-layout.single-panel .code-editor-panel {
+    height: 100vh !important;
+    width: 100% !important;
   }
   
-  .dark-mode .live-preview-panel {
-    border-top-color: var(--border-dark);
+  .resizer {
+    width: 100%;
+    height: 8px;
+    margin: 8px 0;
+    cursor: row-resize;
+  }
+  
+  .resizer::before {
+    width: 40px;
+    height: 2px;
   }
 }
 
 @media (max-width: 768px) {
   .split-layout {
     padding: 10px;
-    gap: 10px;
   }
   
-  .code-editor-panel,
+  .split-layout.single-panel {
+    padding: 0;
+  }
+  
+  .code-editor-panel:not(:only-child),
   .live-preview-panel {
     height: calc(50vh - 10px);
   }
   
-  .live-preview-panel {
-    min-width: 100%; /* On mobile, take full width */
+  .split-layout.single-panel .code-editor-panel {
+    height: 100vh !important;
   }
 }

@@ -34,7 +34,7 @@
 }
 
 .video-container {
-  width: 80%; 
+  width: 80%;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -54,7 +54,8 @@
 .hero-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Fills container, crops if needed */
+  object-fit: cover;
+  /* Fills container, crops if needed */
   display: block;
 }
 
@@ -66,12 +67,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.2) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.2) 50%,
+      transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -87,7 +86,7 @@
 }
 
 .hero-card {
-  background: rgba(24, 12, 133, 0.144);
+  background: rgba(121, 113, 5, 0.158);
   backdrop-filter: blur(20px);
   padding: 25px 30px;
   box-shadow: var(--shadow);
@@ -102,6 +101,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -260,15 +260,15 @@
   animation-play-state: paused;
 }
 
-.feature-title1{
+.feature-title1 {
   color: rgb(0, 164, 209);
 }
 
-.feature-title2{
+.feature-title2 {
   color: rgb(224, 72, 17);
 }
 
-.feature-title3{
+.feature-title3 {
   color: rgb(11, 153, 11);
 }
 
@@ -286,7 +286,8 @@
 }
 
 .feature-card.animate-in {
-  animation-play-state: running; /* Trigger animation when in view */
+  animation-play-state: running;
+  /* Trigger animation when in view */
 }
 
 .feature-card:hover {
@@ -301,6 +302,7 @@
     opacity: 0;
     transform: translateX(120px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -312,35 +314,37 @@
   .video-container {
     width: 60%;
   }
-  
+
   .hero-overlay-container {
+
     right: 3%;
     width: 400px;
     max-width: 45%;
   }
-  
+
   .hero-title {
     font-size: 2.2rem;
   }
-  
+
   /* Animation adjustments for tablet */
   .section-title {
     transform: translateX(60px);
   }
-  
+
   .section-subtitle {
     transform: translateX(80px);
   }
-  
+
   .feature-card {
     transform: translateX(80px);
   }
-  
+
   @keyframes slideInFromRight {
     from {
       opacity: 0;
       transform: translateX(80px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -352,13 +356,13 @@
   .main-content {
     flex-direction: column;
   }
-  
+
   .video-container {
     width: 100%;
     height: 60vh;
     position: relative;
   }
-  
+
   .hero-overlay-container {
     position: absolute;
     top: 50%;
@@ -368,44 +372,49 @@
     width: 90%;
     max-width: 500px;
   }
-  
+
   .hero-card {
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(121, 113, 5, 0);
     height: auto;
   }
-  
+
+  .hero-description {
+    color: white;
+  }
+
   .hero-actions {
     flex-direction: column;
   }
-  
+
   .features-section {
     min-height: auto;
     padding: 4rem 1.5rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   /* Animation adjustments for mobile */
   .section-title {
     transform: translateX(40px);
   }
-  
+
   .section-subtitle {
     transform: translateX(60px);
   }
-  
+
   .feature-card {
     transform: translateX(60px);
   }
-  
+
   @keyframes slideInFromRight {
     from {
       opacity: 0;
       transform: translateX(60px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -417,24 +426,24 @@
   .video-container {
     height: 50vh;
   }
-  
+
   .hero-title {
     font-size: 1.8rem;
   }
-  
+
   .hero-card {
     padding: 30px;
   }
-  
+
   .hero-badge {
     font-size: 0.75rem;
     padding: 6px 16px;
   }
-  
+
   .hero-overlay-container {
     width: 95%;
   }
-  
+
   .features-section {
     padding: 3rem 1rem;
   }

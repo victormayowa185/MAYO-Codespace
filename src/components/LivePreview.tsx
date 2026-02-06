@@ -1,4 +1,3 @@
-// src/components/LivePreview.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { IoMdRefresh } from "react-icons/io";
 import { BsHourglassSplit } from "react-icons/bs";
@@ -106,7 +105,7 @@ const LivePreview: React.FC<LivePreviewProps> = ({
   return (
     <div className={`live-preview ${isDarkMode ? 'dark-mode' : ''}`}>
       <div className="preview-header">
-
+        <h3>Live Preview</h3>
         <div className="preview-controls">
           <button
             className="refresh-btn"
@@ -114,13 +113,10 @@ const LivePreview: React.FC<LivePreviewProps> = ({
             title="Refresh Preview"
             disabled={isLoading}
           >
-            {isLoading ? 
-            (
-              <BsHourglassSplit />
+            {isLoading ? (
+              <BsHourglassSplit className="btn-icon" />
             ) : (
-
-              <IoMdRefresh />
-
+              <IoMdRefresh className="btn-icon" />
             )}
           </button>
           <span className="status">{isLoading ? 'Loading...' : 'Live'}</span>
@@ -143,7 +139,6 @@ const LivePreview: React.FC<LivePreviewProps> = ({
           style={{ opacity: isLoading ? 0.5 : 1 }}
         />
       </div>
-
     </div>
   );
 };

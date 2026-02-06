@@ -1,223 +1,153 @@
-// src/components/CodeEditor.tsx
 import React, { useState, useEffect } from 'react';
-import { CgOptions } from "react-icons/cg";
 import '../styles/code-editor.css';
+import Editor from '@monaco-editor/react';
+import { FiMaximize2, FiMinimize2, FiSun, FiMoon, FiEye, FiEyeOff } from 'react-icons/fi';
+import { AiOutlineCode } from 'react-icons/ai';
+import { VscFileCode } from 'react-icons/vsc';
 
 interface CodeEditorProps {
-    code: {
-        jsx: string;
-        css: string;
-        html: string;
-    };
-    onCodeChange: (language: 'jsx' | 'css' | 'html', value: string) => void;
-    isDarkMode: boolean;
-    onFullscreenToggle: () => void;
-    isFullscreen: boolean;
+  code: {
+    jsx: string;
+    css: string;
+    html: string;
+  };
+  onCodeChange: (language: 'jsx' | 'css' | 'html', value: string) => void;
+  isDarkMode: boolean;
+  onFullscreenToggle: () => void;
+  isFullscreen: boolean;
+  onThemeToggle: () => void;
+  onPreviewToggle: () => void;
+  isPreviewVisible: boolean;
 }
 
 const CodeEditor: React.FC<CodeEditorProps> = ({
-    code,
-    onCodeChange,
-    isDarkMode,
-    onFullscreenToggle,
-    isFullscreen
+  code,
+  onCodeChange,
+  isDarkMode,
+  onFullscreenToggle,
+  isFullscreen,
+  onThemeToggle,
+  onPreviewToggle,
+  isPreviewVisible
 }) => {
-    const [activeLanguage, setActiveLanguage] = useState<'jsx' | 'css' | 'html'>('jsx');
-    const [isAutoWrap, setIsAutoWrap] = useState(false);
-    const [showOptions, setShowOptions] = useState(false);
+  const [activeTab, setActiveTab] = useState<'jsx' | 'css' | 'html'>('jsx');
+  const [editorKey, setEditorKey] = useState(0);
 
-    // Keyboard shortcuts
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            // Ctrl+S to switch language
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                setActiveLanguage(prev => {
-                    if (prev === 'jsx') return 'css';
-                    if (prev === 'css') return 'html';
-                    return 'jsx';
-                });
-            }
-            // Ctrl+F for fullscreen
-            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-                e.preventDefault();
-                onFullscreenToggle();
-            }
-            // Ctrl+W for word wrap
-            if ((e.ctrlKey || e.metaKey) && e.key === 'w') {
-                e.preventDefault();
-                setIsAutoWrap(!isAutoWrap);
-            }
-            // Ctrl+Shift+F for format
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'F') {
-                e.preventDefault();
-                handleFormatCode();
-            }
-            // Ctrl+O for options
-            if ((e.ctrlKey || e.metaKey) && e.key === 'o') {
-                e.preventDefault();
-                setShowOptions(!showOptions);
-            }
-        };
+  // Safe getter for code content
+  const getCodeContent = (lang: 'jsx' | 'css' | 'html'): string => {
+    if (!code || typeof code !== 'object') {
+      return '';
+    }
+    return code[lang] || '';
+  };
 
-        document.addEventListener('keydown', handleKeyDown);
-        return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [isAutoWrap, onFullscreenToggle, showOptions]);
+  // Handle code change safely
+  const handleEditorChange = (value: string | undefined) => {
+    if (value !== undefined) {
+      onCodeChange(activeTab, value);
+    }
+  };
 
-    const handleFormatCode = () => {
-        const formatted = code[activeLanguage]
-            .replace(/\s+/g, ' ')
-            .replace(/\s*([{}()=;:,])\s*/g, '$1 ')
-            .trim();
-        onCodeChange(activeLanguage, formatted);
-        setShowOptions(false);
-    };
+  // Get editor language based on active tab
+  const getEditorLanguage = () => {
+    switch (activeTab) {
+      case 'jsx': return 'javascript';
+      case 'css': return 'css';
+      case 'html': return 'html';
+      default: return 'javascript';
+    }
+  };
 
-    const handleClearCode = () => {
-        if (window.confirm('Clear all code in current editor?')) {
-            onCodeChange(activeLanguage, '');
-            setShowOptions(false);
-        }
-    };
+  // Get editor value safely
+  const getEditorValue = () => {
+    return getCodeContent(activeTab);
+  };
 
-    return (
-        <div className={`code-editor-wrapper ${isDarkMode ? 'dark-mode' : ''}`}>
-            {/* Controls moved to the right */}
-            <div className="editor-controls-bar right-aligned">
-                {/* Combined Language + Options buttons */}
-                <div className="combined-controls">
-                    {/* Language Switcher */}
-                    <div className="language-dropdown">
-                        <button
-                            className="language-toggle-btn"
-                            onClick={() => setShowOptions(false)}
-                            title="Switch Language (Ctrl+S)"
-                        >
-                            {activeLanguage.toUpperCase()}
-                            <span className="dropdown-arrow">▼</span>
-                        </button>
-                        <div className="language-dropdown-content">
-                            <button
-                                onClick={() => {
-                                    setActiveLanguage('jsx');
-                                    setShowOptions(false);
-                                }}
-                                className={activeLanguage === 'jsx' ? 'active' : ''}
-                            >
-                                <span className="lang-icon">⚛️</span> JSX
-                            </button>
-                            <button
-                                onClick={() => {
-                                    setActiveLanguage('css');
-                                    setShowOptions(false);
-                                }}
-                                className={activeLanguage === 'css' ? 'active' : ''}
-                            >
-                                <span className="lang-icon">🎨</span> CSS
-                            </button>
-                            <button
-                                onClick={() => {
-                                    setActiveLanguage('html');
-                                    setShowOptions(false);
-                                }}
-                                className={activeLanguage === 'html' ? 'active' : ''}
-                            >
-                                <span className="lang-icon">📄</span> HTML
-                            </button>
-                        </div>
-                    </div>
+  // Refresh editor on theme change
+  useEffect(() => {
+    setEditorKey(prev => prev + 1);
+  }, [isDarkMode]);
 
-                    {/* Options Button */}
-                    <button
-                        className="options-toggle-btn"
-                        onClick={() => setShowOptions(!showOptions)}
-                        title="Options (Ctrl+O)"
-                    >
-                        <CgOptions />
-                   
-                    </button>
-
-                    {/* Options Menu */}
-                    {showOptions && (
-                        <div className="options-menu">
-                            <div className="menu-header">
-                                <h4>Editor Options</h4>
-                                <button className="close-menu-btn" onClick={() => setShowOptions(false)}>×</button>
-                            </div>
-                            <div className="menu-items">
-                                <button className="menu-item" onClick={handleFormatCode}>
-                                    <span className="menu-icon">✨</span>
-                                    <div className="menu-text">
-                                        <span className="menu-title">Format Code</span>
-                                        <span className="menu-shortcut">Ctrl+Shift+F</span>
-                                    </div>
-                                </button>
-                                <button className="menu-item" onClick={() => setIsAutoWrap(!isAutoWrap)}>
-                                    <span className="menu-icon">↔️</span>
-                                    <div className="menu-text">
-                                        <span className="menu-title">Auto Wrap</span>
-                                        <span className="menu-status">{isAutoWrap ? 'ON' : 'OFF'}</span>
-                                        <span className="menu-shortcut">Ctrl+W</span>
-                                    </div>
-                                </button>
-                                <button className="menu-item" onClick={handleClearCode}>
-                                    <span className="menu-icon">🗑️</span>
-                                    <div className="menu-text">
-                                        <span className="menu-title">Clear Editor</span>
-                                        <span className="menu-warning">This cannot be undone</span>
-                                    </div>
-                                </button>
-                                <button className="menu-item" onClick={onFullscreenToggle}>
-                                    <span className="menu-icon">{isFullscreen ? '⤓' : '⤢'}</span>
-                                    <div className="menu-text">
-                                        <span className="menu-title">{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>
-                                        <span className="menu-shortcut">Ctrl+F</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* Code Editor Area */}
-            <div className="code-editor-container">
-                <div className="editor-header">
-                    <span className="file-name">app.{activeLanguage === 'jsx' ? 'jsx' : activeLanguage}</span>
-                    <span className="language-badge">{activeLanguage.toUpperCase()}</span>
-                </div>
-                <textarea
-                    className={`code-editor ${isAutoWrap ? 'auto-wrap' : ''}`}
-                    value={code[activeLanguage]}
-                    onChange={(e) => onCodeChange(activeLanguage, e.target.value)}
-                    placeholder={`Start coding in ${activeLanguage.toUpperCase()}... (Ctrl+W to toggle word wrap)`}
-                    spellCheck="false"
-                    style={{ whiteSpace: isAutoWrap ? 'pre-wrap' : 'pre' }}
-                />
-                <div className="editor-footer">
-                    <span className="line-count">
-                        {code[activeLanguage].split('\n').length} lines
-                    </span>
-                    <span className="char-count">
-                        {code[activeLanguage].length} characters
-                    </span>
-                    <span className="wrap-status">
-                        {isAutoWrap ? 'Word Wrap: ON' : 'Word Wrap: OFF'}
-                    </span>
-                </div>
-            </div>
-
-            {/* Keyboard Shortcuts Help */}
-            <div className="shortcuts-help">
-                <span>Shortcuts: </span>
-                <kbd>Ctrl+S</kbd> Switch Language •
-                <kbd>Ctrl+W</kbd> Toggle Wrap •
-                <kbd>Ctrl+F</kbd> Fullscreen •
-                <kbd>Ctrl+Shift+F</kbd> Format •
-                <kbd>Ctrl+O</kbd> Options
-            </div>
+  return (
+    <div className={`code-editor ${isDarkMode ? 'dark-mode' : ''}`}>
+      <div className="editor-header">
+        <div className="editor-tabs">
+          <button
+            className={`tab-btn ${activeTab === 'jsx' ? 'active' : ''}`}
+            onClick={() => setActiveTab('jsx')}
+          >
+            <AiOutlineCode className="tab-icon" />
+            <span>JSX</span>
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'css' ? 'active' : ''}`}
+            onClick={() => setActiveTab('css')}
+          >
+            <VscFileCode className="tab-icon" />
+            <span>CSS</span>
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'html' ? 'active' : ''}`}
+            onClick={() => setActiveTab('html')}
+          >
+            <VscFileCode className="tab-icon" />
+            <span>HTML</span>
+          </button>
         </div>
-    );
+
+        <div className="editor-controls">
+          <button
+            className="control-btn"
+            onClick={onPreviewToggle}
+            title={isPreviewVisible ? "Hide Preview" : "Show Preview"}
+          >
+            {isPreviewVisible ? <FiEyeOff /> : <FiEye />}
+          </button>
+          
+          <button
+            className="control-btn"
+            onClick={onThemeToggle}
+            title={isDarkMode ? "Light Mode" : "Dark Mode"}
+          >
+            {isDarkMode ? <FiSun /> : <FiMoon />}
+          </button>
+          
+          <button
+            className="control-btn"
+            onClick={onFullscreenToggle}
+            title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+          >
+            {isFullscreen ? <FiMinimize2 /> : <FiMaximize2 />}
+          </button>
+        </div>
+      </div>
+
+      <div className="editor-content">
+        <Editor
+          key={`${editorKey}-${activeTab}`}
+          height="100%"
+          language={getEditorLanguage()}
+          value={getEditorValue()}
+          onChange={handleEditorChange}
+          theme={isDarkMode ? 'vs-dark' : 'light'}
+          options={{
+            fontSize: 14,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false,
+            wordWrap: 'on',
+            automaticLayout: true,
+            formatOnPaste: true,
+            formatOnType: true,
+            lineNumbers: 'on',
+            renderLineHighlight: 'all',
+            cursorBlinking: 'smooth',
+            cursorSmoothCaretAnimation: 'on',
+            smoothScrolling: true,
+          }}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default CodeEditor;

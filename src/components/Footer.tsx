@@ -32,8 +32,8 @@ const Footer: React.FC = () => {
             <div className="footer-column">
               <h4 className="footer-column-title">About</h4>
               <div className="footer-links-group">
-                <Link to="/about" className="footer-link">About Us</Link>
-                <Link to="/features" className="footer-link">Features</Link>
+                <Link to="/docs" className="footer-link">About Us</Link>
+                <Link to="/docs" className="footer-link">Features</Link>
                 <a 
                   href="https://summerofcode.withgoogle.com" 
                   target="_blank" 
