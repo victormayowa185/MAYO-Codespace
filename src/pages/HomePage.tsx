@@ -80,9 +80,10 @@ const HomePage: React.FC = () => {
           <div className="hero-card">
             <div className="hero-badge">GSoC 2026 PROJECT</div>
             <h1 className="hero-title">
-              Professional, <span className="highlight">Elegant,</span>
+              <span className="hero-word">Professional, </span>
+              <span className="highlight">Elegant,</span>
               <br />
-              Code
+              <span className="hero-word">Code</span>
             </h1>
             <p className="hero-description">
               A browser-based IDE for learning, prototyping,
@@ -96,7 +97,7 @@ const HomePage: React.FC = () => {
                 Launch Workspace
               </Link>
               <Link to="/showcase" className="btn btn-secondary">
-               <RiGalleryFill />
+                <RiGalleryFill />
                 View Examples
               </Link>
             </div>
@@ -122,7 +123,7 @@ const HomePage: React.FC = () => {
               </p>
 
               <MdSpeed />
-              
+
             </div>
 
             <div className="feature-card" ref={(el) => addToRefs(el, 1)}>

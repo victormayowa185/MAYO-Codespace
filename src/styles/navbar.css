@@ -1,10 +1,11 @@
-/* src/components/Navbar.css */
+/* src/components/Navbar.css - LIGHT MODE ONLY */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: #f8f9fa;
+  background: #f8f9fa; /* Light background */
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 0 2rem;
@@ -26,7 +27,7 @@
   font-family: mulish;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #333333;
+  color: #333333; /* Dark text */
 }
 
 .logo-icon {
@@ -48,7 +49,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: #666666;
+  color: #666666; /* Gray text */
   font-weight: 500;
   font-size: 0.95rem;
   transition: color 0.2s;
@@ -57,11 +58,11 @@
 }
 
 .nav-link:hover {
-  color: #007acc;
+  color: #007acc; /* Blue on hover */
 }
 
 .nav-link.active {
-  color: #007acc;
+  color: #007acc; /* Blue for active */
 }
 
 .nav-link.active::after {
@@ -71,12 +72,12 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #007acc;
+  background: #007acc; /* Blue underline */
   border-radius: 1px;
 }
 
 .github-link {
-  background: #333333;
+  background: #333333; /* Dark background */
   color: white !important;
   padding: 8px 16px;
   border-radius: 6px;
@@ -84,7 +85,32 @@
 }
 
 .github-link:hover {
-  background: #007acc;
+  background: #007acc; /* Blue on hover */
+}
+
+/* ========== THEME TOGGLE BUTTON ========== */
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333333; /* Dark icon */
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(0, 122, 204, 0.1); /* Light blue background */
+  border-color: #007acc; /* Blue border */
+  color: #007acc; /* Blue icon */
+  transform: rotate(15deg);
 }
 
 /* Responsive */
@@ -97,3 +123,6 @@
     padding: 0 1rem;
   }
 }
+
+/* ========== REMOVE DARK MODE STYLES ========== */
+/* All the body.dark-mode styles should go in dark-mode.css, not here! */

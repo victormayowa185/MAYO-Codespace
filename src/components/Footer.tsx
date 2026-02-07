@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           
           {/* Right Column: Links in rows and columns */}
           <div className="footer-right">
-            
+              
             {/* First Row: About & Contact */}
             <div className="footer-column">
               <h4 className="footer-column-title">About</h4>

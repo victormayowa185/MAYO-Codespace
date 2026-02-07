@@ -55,7 +55,7 @@ const ShowcasePage: React.FC = () => {
           </h1>
           <p className="hero-subtitle">
             A fast, browser-based coding environment built for modern developers.
-            Write, preview, and test your code instantly—no setup required.
+            Write, preview, protype, and test your code instantly—no setup required.
           </p>
 
           <div className="cta-buttons">

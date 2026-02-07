@@ -1,20 +1,22 @@
 // src/App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import HomePage from './pages/HomePage';
-import WorkspacePage from './pages/WorkSpace';
+import WorkspacePage from './pages/Workspace';
 import ShowcasePage from './pages/ShowcasePage';
-// import DocsPage from './pages/DocsPage';
-// import './App.css';
+import './styles/darkmode.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/workspace" element={<WorkspacePage />} />
-        <Route path="/showcase" element={<ShowcasePage />} />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/workspace" element={<WorkspacePage />} />
+          <Route path="/showcase" element={<ShowcasePage />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 

@@ -1,0 +1,32 @@
+/* ALL dark mode styles in ONE file */
+
+/* Homepage dark mode */
+body.dark-mode .homepage {
+  background: #0a0a0a;
+}
+body.dark-mode .features-section{
+  background-color: black;
+}
+
+body.dark-mode .section-subtitle{
+  color: white;
+}
+
+body.dark-mode .hero-title {
+  color: white;
+}
+
+/* Workspace dark mode */
+body.dark-mode .workspace-page {
+  background: #0a0a0a;
+}
+
+/* Showcase dark mode */
+body.dark-mode .showcase-page {
+  background: #0a0a0a;
+}
+
+/* Docs dark mode */
+body.dark-mode .docs-page {
+  background: #0a0a0a;
+}
