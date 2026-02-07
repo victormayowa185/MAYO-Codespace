@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import HomePage from './pages/HomePage';
 import WorkspacePage from './pages/Workspace';
 import ShowcasePage from './pages/ShowcasePage';
+import DocumentPage from './pages/DocsPage';
 import './styles/darkmode.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/workspace" element={<WorkspacePage />} />
           <Route path="/showcase" element={<ShowcasePage />} />
+          <Route path="/docs" element={<DocumentPage />} />
         </Routes>
       </Router>
     </ThemeProvider>

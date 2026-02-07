@@ -8,6 +8,18 @@ body.dark-mode .features-section{
   background-color: black;
 }
 
+body.dark-mode .feature-description{
+  color: white;
+}
+
+body.dark-mode .icon{
+  color: white;
+}
+
+body.dark-mode .btn-secondary{
+  color: white;
+}
+
 body.dark-mode .section-subtitle{
   color: white;
 }
@@ -22,11 +34,175 @@ body.dark-mode .workspace-page {
 }
 
 /* Showcase dark mode */
+/* ========== SHOWCASE PAGE DARK MODE ========== */
+
+/* Showcase page background */
 body.dark-mode .showcase-page {
   background: #0a0a0a;
+  color: #ffffff;
 }
+
+/* Hero section */
+body.dark-mode .showcase-hero {
+  background: linear-gradient(135deg, rgba(0, 122, 204, 0.3), transparent);
+}
+
+body.dark-mode .hero-title {
+  color: #ffffff;
+}
+
+body.dark-mode .hero-subtitle {
+  color: #b0b0b0;
+}
+
+/* Features section */
+body.dark-mode .showcase-features {
+  background: transparent;
+}
+
+body.dark-mode .section-title {
+  color: #ffffff;
+}
+
+body.dark-mode .feature-card {
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .feature-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .feature-title {
+  color: #ffffff;
+}
+
+body.dark-mode .feature-desc {
+  color: #b0b0b0;
+}
+
+/* Walkthrough section */
+body.dark-mode .walkthrough-section {
+  background: #111111;
+}
+
+/* Differentiators section */
+body.dark-mode .differentiators {
+  background: transparent;
+}
+
+body.dark-mode .diff-item {
+  background: rgba(0, 122, 204, 0.15);
+  color: #ffffff;
+}
+
+body.dark-mode .diff-item:hover {
+  background: #007acc;
+}
+
+body.dark-mode .diff-text {
+  color: #ffffff;
+}
+
+/* CTA section stays the same (blue gradient) */
+/* No changes needed for .cta-section since it's already blue/white */
+
+/* Buttons */
+body.dark-mode .primary-cta {
+  background: #007acc;
+  color: white;
+}
+
+body.dark-mode .primary-cta:hover {
+  background: #005d99;
+}
+
+body.dark-mode .secondary-cta {
+  background: transparent;
+  color: #4da6ff;
+  border: 2px solid #4da6ff;
+}
+
+body.dark-mode .secondary-cta:hover {
+  background: rgba(77, 166, 255, 0.1);
+}
+
+/* Feature icon gradients for dark mode */
+body.dark-mode .feature-icon {
+  background: linear-gradient(135deg, #4da6ff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero title gradient for dark mode */
+body.dark-mode .hero-title {
+  background: linear-gradient(135deg, #4da6ff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 
 /* Docs dark mode */
 body.dark-mode .docs-page {
   background: #0a0a0a;
+}
+
+
+
+
+
+
+/* ========== NAVBAR DARK MODE ========== */
+
+/* Navbar background */
+body.dark-mode .navbar {
+  background: rgba(26, 26, 26, 0.95); /* Dark semi-transparent */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333333;
+}
+
+/* Logo text */
+body.dark-mode .nav-logo {
+  color: #ffffff; /* White text */
+}
+
+/* Navigation links */
+body.dark-mode .nav-link {
+  color: #b0b0b0; /* Light gray text */
+}
+
+body.dark-mode .nav-link:hover {
+  color: #4da6ff; /* Bright blue on hover */
+}
+
+body.dark-mode .nav-link.active {
+  color: #4da6ff; /* Bright blue for active */
+}
+
+body.dark-mode .nav-link.active::after {
+  background: #4da6ff; /* Bright blue underline */
+}
+
+/* GitHub button */
+body.dark-mode .github-link {
+  background: #333333; /* Dark gray background */
+  color: #ffffff !important;
+}
+
+body.dark-mode .github-link:hover {
+  background: #4da6ff; /* Bright blue on hover */
+}
+
+/* Theme toggle button */
+body.dark-mode .theme-toggle-btn {
+  color: #ffffff; /* White icon */
+  border-color: #444444; /* Dark border */
+}
+
+body.dark-mode .theme-toggle-btn:hover {
+  background: rgba(77, 166, 255, 0.1); /* Light blue background */
+  border-color: #4da6ff; /* Bright blue border */
+  color: #4da6ff;
 }

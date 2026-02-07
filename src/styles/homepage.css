@@ -104,6 +104,7 @@ body {
 }
 
 .hero-title {
+  color: white;
   font-family: mulish;
   font-size: 2.9rem;
   line-height: 1.1;
@@ -111,15 +112,18 @@ body {
   font-weight: 800;
 }
 
-.hero-title .hero-word {
-  color: white;
-}
+
 
 .hero-title .highlight {
   background: linear-gradient(135deg, #007acc, #00bcd4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.hero-title .hero-word {
+  color: white;
+  -webkit-text-fill-color: white;
 }
 
 .hero-description {
@@ -243,14 +247,19 @@ body {
 
 .feature-title1 {
   color: rgb(0, 164, 209);
+  -webkit-text-fill-color: rgb(0, 164, 209);
 }
 
 .feature-title2 {
   color: rgb(224, 72, 17);
+  -webkit-text-fill-color: rgb(224, 72, 17);
+
 }
 
 .feature-title3 {
   color: rgb(11, 153, 11);
+  -webkit-text-fill-color: rgb(11, 153, 11);
+
 }
 
 .feature-card:nth-child(1) {

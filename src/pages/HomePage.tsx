@@ -122,7 +122,7 @@ const HomePage: React.FC = () => {
                 No manual refresh required.
               </p>
 
-              <MdSpeed />
+              <MdSpeed className='icon'/>
 
             </div>
 
@@ -132,7 +132,7 @@ const HomePage: React.FC = () => {
                 Built-in code editor with syntax highlighting, auto-completion,
                 and error detection.
               </p>
-              <FaTools />
+              <FaTools className='icon'/>
             </div>
 
             <div className="feature-card" ref={(el) => addToRefs(el, 2)}>
@@ -141,7 +141,7 @@ const HomePage: React.FC = () => {
                 Generate shareable URLs for your projects. Collaborate with
                 team members instantly.
               </p>
-              <RiShare2Line />
+              <RiShare2Line className='icon' />
             </div>
           </div>
         </div>
