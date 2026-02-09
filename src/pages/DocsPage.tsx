@@ -34,20 +34,20 @@ import {
   MdTrendingUp,
   MdDownload
 } from 'react-icons/md';
-import { 
-  FaGithub, 
-  FaReact, 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaPython, 
+import {
+  FaGithub,
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaPython,
   FaCuttlefish,
   FaTerminal,
   FaPalette,
   FaUsers,
   FaRobot
 } from 'react-icons/fa';
-import { 
-  SiJavascript, 
+import {
+  SiJavascript,
   SiCplusplus,
   SiTypescript,
   SiNextdotjs
@@ -139,13 +139,13 @@ const DocsPage: React.FC = () => {
             Everything you need to build, test, and deploy with our professional browser-based IDE.
             From beginner to expert, we've got you covered.
           </p>
-          
+
           {/* Animated Search Bar */}
           <div className="search-container animate-slide-up-delay-2">
             <MdSearch className="search-icon" />
-            <input 
-              type="text" 
-              placeholder="Search documentation (e.g., 'How to run code', 'Keyboard shortcuts')" 
+            <input
+              type="text"
+              placeholder="Search documentation (e.g., 'How to run code', 'Keyboard shortcuts')"
               className="search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -181,14 +181,14 @@ const DocsPage: React.FC = () => {
         {/* Sidebar Navigation */}
         <nav className="docs-sidebar">
           <div className="sidebar-header">
-            <h3><MdBook /> Documentation</h3>
+            <h3><MdBook className='bookmark' /> Documentation</h3>
             <div className="sidebar-subtitle">Navigate through guides</div>
           </div>
-          
+
           <ul className="sidebar-nav">
             {docsSections.map((section, index) => (
               <li key={section.id}>
-                <a 
+                <a
                   href={`#${section.id}`}
                   className={`nav-item ${activeSection === section.id ? 'active' : ''}`}
                   style={{ '--color': section.color } as React.CSSProperties}
@@ -222,8 +222,8 @@ const DocsPage: React.FC = () => {
         {/* Main Content */}
         <main className="docs-content">
           {/* 1️⃣ Overview Section */}
-          <section 
-            id="overview" 
+          <section
+            id="overview"
             ref={el => sectionRefs.current[0] = el}
             className="docs-section animate-on-scroll"
           >
@@ -281,8 +281,8 @@ const DocsPage: React.FC = () => {
           </section>
 
           {/* 2️⃣ Getting Started Section */}
-          <section 
-            id="getting-started" 
+          <section
+            id="getting-started"
             ref={el => sectionRefs.current[1] = el}
             className="docs-section animate-on-scroll"
           >
@@ -311,8 +311,8 @@ const DocsPage: React.FC = () => {
           </section>
 
           {/* 3️⃣ Editor Guide Section */}
-          <section 
-            id="editor-guide" 
+          <section
+            id="editor-guide"
             ref={el => sectionRefs.current[2] = el}
             className="docs-section animate-on-scroll"
           >
@@ -360,8 +360,8 @@ function Welcome() {
           </section>
 
           {/* 4️⃣ Language Support Section */}
-          <section 
-            id="language-support" 
+          <section
+            id="language-support"
             ref={el => sectionRefs.current[3] = el}
             className="docs-section animate-on-scroll"
           >
@@ -384,10 +384,10 @@ function Welcome() {
                   <div className="lang-example">
                     <pre>
                       {lang.name === 'HTML' ? '<h1>Hello World</h1>' :
-                       lang.name === 'CSS' ? 'body { color: #007acc; }' :
-                       lang.name === 'JavaScript' ? 'console.log("Hello");' :
-                       lang.name === 'React/JSX' ? 'function App() {\n  return <h1>Hello</h1>;\n}' :
-                       '// Coming Soon'}
+                        lang.name === 'CSS' ? 'body { color: #007acc; }' :
+                          lang.name === 'JavaScript' ? 'console.log("Hello");' :
+                            lang.name === 'React/JSX' ? 'function App() {\n  return <h1>Hello</h1>;\n}' :
+                              '// Coming Soon'}
                     </pre>
                   </div>
                 </div>
@@ -396,8 +396,8 @@ function Welcome() {
           </section>
 
           {/* 5️⃣ Workspace & Files Section */}
-          <section 
-            id="workspace-files" 
+          <section
+            id="workspace-files"
             ref={el => sectionRefs.current[4] = el}
             className="docs-section animate-on-scroll"
           >
@@ -433,8 +433,8 @@ function Welcome() {
           </section>
 
           {/* 6️⃣ Running & Output Section */}
-          <section 
-            id="running-output" 
+          <section
+            id="running-output"
             ref={el => sectionRefs.current[5] = el}
             className="docs-section animate-on-scroll"
           >
@@ -463,8 +463,8 @@ function Welcome() {
           </section>
 
           {/* 7️⃣ Limitations & Security */}
-          <section 
-            id="limitations-security" 
+          <section
+            id="limitations-security"
             ref={el => sectionRefs.current[6] = el}
             className="docs-section animate-on-scroll"
           >
@@ -494,8 +494,8 @@ function Welcome() {
           </section>
 
           {/* 8️⃣ FAQ Section */}
-          <section 
-            id="faq" 
+          <section
+            id="faq"
             ref={el => sectionRefs.current[7] = el}
             className="docs-section animate-on-scroll"
           >
@@ -521,8 +521,8 @@ function Welcome() {
           </section>
 
           {/* 9️⃣ Roadmap Section */}
-          <section 
-            id="roadmap" 
+          <section
+            id="roadmap"
             ref={el => sectionRefs.current[8] = el}
             className="docs-section animate-on-scroll"
           >
@@ -539,7 +539,6 @@ function Welcome() {
                   <div className="roadmap-content">
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>
-                    <div className="roadmap-eta">{item.eta}</div>
                   </div>
                 </div>
               ))}
@@ -547,8 +546,8 @@ function Welcome() {
           </section>
 
           {/* 🔟 About & Credits */}
-          <section 
-            id="about" 
+          <section
+            id="about"
             ref={el => sectionRefs.current[9] = el}
             className="docs-section animate-on-scroll"
           >
@@ -562,7 +561,7 @@ function Welcome() {
               <div className="mission-card">
                 <h3>Our Mission</h3>
                 <p>
-                  To democratize coding education by providing a professional-grade development 
+                  To democratize coding education by providing a professional-grade development
                   environment that's accessible to everyone, regardless of their hardware or experience level.
                 </p>
               </div>

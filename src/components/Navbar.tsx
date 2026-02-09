@@ -8,7 +8,7 @@ import '../styles/Navbar.css';
 const Navbar: React.FC = () => {
   const location = useLocation();
   const { isDarkMode, toggleDarkMode } = useTheme(); // USE THEME
-  
+
   const isActive = (path: string) => {
     return location.pathname === path;
   };
@@ -43,9 +43,9 @@ const Navbar: React.FC = () => {
           >
             GitHub
           </a>
-          
+
           {/* NEW: Theme Toggle Button */}
-          <button 
+          <button
             className="theme-toggle-btn"
             onClick={toggleDarkMode}
             title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}

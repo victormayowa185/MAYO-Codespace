@@ -1,8 +1,8 @@
-/* src/styles/HomePage.css - LIGHT MODE ONLY */
 
 body {
   margin: 0;
   padding: 0;
+  font-family: mulish;
 }
 
 .homepage {
@@ -184,6 +184,7 @@ body {
 
 .features-section {
   padding: 6rem 2rem;
+  width: 100%;
   background: #f8f9fa;
   position: relative;
   z-index: 10;
@@ -201,9 +202,9 @@ body {
 .section-title {
   text-align: center;
   font-size: 2.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: 700;
-  color: black;
+  color: yellow;
   opacity: 0;
   transform: translateX(80px);
   animation: slideInFromRight 0.8s ease-out 0.2s forwards;

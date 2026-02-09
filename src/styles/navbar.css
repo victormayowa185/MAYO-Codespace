@@ -1,11 +1,9 @@
-/* src/components/Navbar.css - LIGHT MODE ONLY */
-
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: #f8f9fa; 
+  background: #f8f9fa;
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 0 2rem;
@@ -118,7 +116,7 @@
   .nav-links {
     display: none; /* Add hamburger menu later */
   }
-  
+
   .nav-container {
     padding: 0 1rem;
   }

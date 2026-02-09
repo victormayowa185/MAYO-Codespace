@@ -4,23 +4,24 @@
 body.dark-mode .homepage {
   background: #0a0a0a;
 }
-body.dark-mode .features-section{
+
+body.dark-mode .features-section {
   background-color: black;
 }
 
-body.dark-mode .feature-description{
+body.dark-mode .feature-description {
   color: white;
 }
 
-body.dark-mode .icon{
+body.dark-mode .icon {
   color: white;
 }
 
-body.dark-mode .btn-secondary{
+body.dark-mode .btn-secondary {
   color: white;
 }
 
-body.dark-mode .section-subtitle{
+body.dark-mode .section-subtitle {
   color: white;
 }
 
@@ -158,51 +159,266 @@ body.dark-mode .docs-page {
 
 /* Navbar background */
 body.dark-mode .navbar {
-  background: rgba(26, 26, 26, 0.95); /* Dark semi-transparent */
+  background: rgba(26, 26, 26, 0.95);
+  /* Dark semi-transparent */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #333333;
 }
 
 /* Logo text */
 body.dark-mode .nav-logo {
-  color: #ffffff; /* White text */
+  color: #ffffff;
+  /* White text */
 }
 
 /* Navigation links */
 body.dark-mode .nav-link {
-  color: #b0b0b0; /* Light gray text */
+  color: #b0b0b0;
+  /* Light gray text */
 }
 
 body.dark-mode .nav-link:hover {
-  color: #4da6ff; /* Bright blue on hover */
+  color: #4da6ff;
+  /* Bright blue on hover */
 }
 
 body.dark-mode .nav-link.active {
-  color: #4da6ff; /* Bright blue for active */
+  color: #4da6ff;
+  /* Bright blue for active */
 }
 
 body.dark-mode .nav-link.active::after {
-  background: #4da6ff; /* Bright blue underline */
+  background: #4da6ff;
+  /* Bright blue underline */
 }
 
 /* GitHub button */
 body.dark-mode .github-link {
-  background: #333333; /* Dark gray background */
+  background: #333333;
+  /* Dark gray background */
   color: #ffffff !important;
 }
 
 body.dark-mode .github-link:hover {
-  background: #4da6ff; /* Bright blue on hover */
+  background: #4da6ff;
+  /* Bright blue on hover */
 }
 
 /* Theme toggle button */
 body.dark-mode .theme-toggle-btn {
-  color: #ffffff; /* White icon */
-  border-color: #444444; /* Dark border */
+  color: #ffffff;
+  /* White icon */
+  border-color: #444444;
+  /* Dark border */
 }
 
 body.dark-mode .theme-toggle-btn:hover {
-  background: rgba(77, 166, 255, 0.1); /* Light blue background */
-  border-color: #4da6ff; /* Bright blue border */
+  background: rgba(77, 166, 255, 0.1);
+  /* Light blue background */
+  border-color: #4da6ff;
+  /* Bright blue border */
   color: #4da6ff;
+}
+
+
+/* the docs dark mode styles */
+
+body.dark-mode .docs-page {
+  background-color: black;
+}
+
+body.dark-mode .docs-hero {
+  background: linear-gradient(135deg, #035992b0, rgba(43, 10, 10, 0.466) 100%);
+}
+
+body.dark-mode .docs-sidebar {
+  background-color: black;
+  border-color: #4da6ff;
+  -webkit-text-fill-color: white;
+}
+
+body.dark-mode .bookmark {
+  color: #4da6ff;
+}
+
+body.dark-mode .quicklink {
+  background: #4da6ff21;
+}
+
+body.dark-mode .docs-section {
+  background-color: black;
+  border-color: #4da6ff;
+
+}
+
+body.dark-mode .feature-card h3 {
+  -webkit-text-fill-color: white;
+}
+
+body.dark-mode .feature-card {
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.712);
+}
+
+body.dark-mode .target-audience h3 {
+  -webkit-text-fill-color: white;
+}
+
+body.dark-mode .audience-card {
+  background: black;
+}
+
+body.dark-mode .target-audience h4 {
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .target-audience p {
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.712);
+}
+
+body.dark-mode .step-card {
+  background: black;
+  border: 1px solid #f0f0f0;
+}
+
+body.dark-mode .step-card h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .step-card p {
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.712);
+}
+
+body.dark-mode .step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: #007acc;
+}
+
+body.dark-mode .keyboard-shortcuts {
+  background: rgba(29, 24, 24, 0.651);
+}
+
+body.dark-mode .keyboard-shortcuts h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .shortcut {
+  background: rgba(29, 24, 24, 0.651);
+}
+
+body.dark-mode .language-card {
+  background: black;
+  border: 1px solid #f0f0f0;
+}
+
+body.dark-mode .language-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.212);
+}
+
+
+body.dark-mode .lang-example {
+  background: black;
+}
+
+body.dark-mode .lang-example pre {
+  color: rgba(255, 255, 255, 0.788);
+}
+
+body.dark-mode .language-card h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .file-structure {
+  background: rgba(49, 48, 48, 0.432);
+}
+
+body.dark-mode .file-structure h3 {
+  color: rgba(255, 255, 255, 0.918);
+
+}
+
+body.dark-mode .structure-tree {
+  background: #151515;
+}
+
+body.dark-mode .tree-item {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .output-type h4 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .output-type p {
+  color: rgba(255, 255, 255, 0.788);
+}
+
+body.dark-mode .limitation-card {
+  background: black;
+  border: 1px solid #e0e0e0;
+}
+
+body.dark-mode .limitation-card h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .limitation-card p {
+  color: rgba(255, 255, 255, 0.788);
+}
+
+body.dark-mode .faq-card {
+  background: black;
+  border: 1px solid #f0f0f0;
+}
+
+body.dark-mode .faq-card:hover {
+  border-color: #007acc;
+  box-shadow: 0 10px 30px rgba(0, 122, 204, 0.1);
+}
+
+body.dark-mode .faq-question h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .faq-answer p {
+  color: rgba(255, 255, 255, 0.788);
+}
+
+body.dark-mode .roadmap-item {
+  background: rgba(29, 24, 24, 0.651);
+}
+
+body.dark-mode .roadmap-content h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .roadmap-content p {
+  color: rgba(255, 255, 255, 0.788);
+}
+
+body.dark-mode .mission-card {
+  background: linear-gradient(135deg, #0c3d6d, #3132613f);
+}
+
+body.dark-mode .mission-card h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .mission-card p {
+  color: rgba(255, 255, 255, 0.788);
+}
+
+body.dark-mode .credits h3 {
+  color: rgba(255, 255, 255, 0.918);
+}
+
+body.dark-mode .tech-item {
+  background-color: black;
+  border-width: 1px;
+  color: rgba(255, 255, 255, 0.788);
+}
+
+body.dark-mode .docs-cta {
+  background: linear-gradient(135deg, #007acc8c, #00bbd434);
 }

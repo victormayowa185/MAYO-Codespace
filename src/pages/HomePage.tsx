@@ -8,7 +8,7 @@ import { RiGalleryFill } from "react-icons/ri";
 import { RiShare2Line } from "react-icons/ri";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import '../styles/HomePage.css';
+import '../styles/homepage.css';
 
 const HomePage: React.FC = () => {
   const featureCardsRef = useRef<(HTMLDivElement | null)[]>([]);

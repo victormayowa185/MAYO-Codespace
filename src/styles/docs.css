@@ -23,17 +23,27 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(0, 122, 204, 0.1) 0%, transparent 50%),
+  background:
+    radial-gradient(circle at 20% 80%, rgba(0, 122, 204, 0.514) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(156, 39, 176, 0.05) 0%, transparent 50%);
   animation: float 20s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -30px) rotate(120deg); }
-  66% { transform: translate(-20px, 20px) rotate(240deg); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
 }
 
 .hero-content {
@@ -60,8 +70,17 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(0, 122, 204, 0.3); }
-  50% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(0, 122, 204, 0.4); }
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 5px 20px rgba(0, 122, 204, 0.3);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 122, 204, 0.4);
+  }
 }
 
 .hero-title {
@@ -81,8 +100,15 @@
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .hero-subtitle {
@@ -553,9 +579,17 @@
   display: block;
 }
 
-.window-dots span:nth-child(1) { background: #ff5f56; }
-.window-dots span:nth-child(2) { background: #ffbd2e; }
-.window-dots span:nth-child(3) { background: #27ca3f; }
+.window-dots span:nth-child(1) {
+  background: #ff5f56;
+}
+
+.window-dots span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.window-dots span:nth-child(3) {
+  background: #27ca3f;
+}
 
 .demo-title {
   color: #cccccc;
@@ -646,7 +680,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 7px;
   background: var(--color);
 }
 
@@ -923,15 +957,6 @@
   margin-bottom: 10px;
 }
 
-.roadmap-eta {
-  display: inline-block;
-  padding: 6px 12px;
-  background: rgba(0, 122, 204, 0.1);
-  color: #007acc;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
 
 /* ========== ABOUT CONTENT ========== */
 .about-content {
@@ -984,35 +1009,30 @@
   color: #007acc;
 }
 
-.github-link {
-  text-align: center;
-  margin-top: 30px;
+.credits {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
+
 
 .github-link a {
-  display: inline-flex;
+  color: rgba(255, 255, 255, 0.918);
+  text-align: center;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  background: #333333;
-  color: white;
+  align-content: center;
+  align-content: center;
+  width: 30%;
   text-decoration: none;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.github-link a:hover {
-  background: #007acc;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 122, 204, 0.2);
 }
 
 /* ========== CTA ========== */
 .docs-cta {
   text-align: center;
   padding: 60px 40px;
-  background: linear-gradient(135deg, #007acc, #00bcd4);
+  background: linear-gradient(135deg, #035992, #00bbd47a);
   border-radius: 16px;
   margin-top: 50px;
   color: white;
@@ -1096,16 +1116,22 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(30px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1116,13 +1142,13 @@
   .docs-container {
     flex-direction: column;
   }
-  
+
   .docs-sidebar {
     width: 100%;
     position: static;
     margin-bottom: 30px;
   }
-  
+
   .sidebar-nav {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1134,32 +1160,32 @@
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .quick-stats {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .stat-card {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .editor-features,
   .workspace-guide,
   .output-types,
   .limitations-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .steps-timeline {
     flex-direction: column;
   }
-  
+
   .languages-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .shortcuts-grid {
     grid-template-columns: 1fr;
   }
@@ -1169,15 +1195,15 @@
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .section-title {
     font-size: 1.8rem;
   }
-  
+
   .languages-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .cta-button-primary,
   .cta-button-secondary {
     width: 100%;
