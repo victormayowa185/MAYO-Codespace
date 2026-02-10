@@ -9,6 +9,7 @@ import { RiShare2Line } from "react-icons/ri";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/homepage.css';
+import '../styles/darkmode.css'
 
 const HomePage: React.FC = () => {
   const featureCardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -85,7 +86,7 @@ const HomePage: React.FC = () => {
               <br />
               <span className="hero-word">Code</span>
             </h1>
-            <p className="hero-description">
+            <p className="hero-description gradient-text">
               A browser-based IDE for learning, prototyping,
               and sharing React components with zero setup.
               Built for modern web development.
@@ -104,7 +105,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-
+    
       {/* Features Section (Below fold) */}
       <section className="features-section">
         <div className="section-container">

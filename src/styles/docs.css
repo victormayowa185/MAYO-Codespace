@@ -6,7 +6,7 @@
   background: #ffffff;
   font-family: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #333333;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ========== LUXURY HERO SECTION ========== */
@@ -222,13 +222,57 @@
   width: 280px;
   flex-shrink: 0;
   position: sticky;
-  top: 100px;
+  top: 80px;
   height: fit-content;
   background: white;
   border-radius: 16px;
   padding: 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid #f0f0f0;
+  z-index: 100;
+  overflow: scroll;
+  max-height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 80vh;
+}
+
+/* Luxury glassmorphism scrollbar */
+.docs-sidebar::-webkit-scrollbar {
+  width: 9px;
+}
+
+.docs-sidebar::-webkit-scrollbar-track {
+  background: rgba(248, 249, 250, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  margin: 20px 0;
+  border: 1px solid rgba(0, 122, 204, 0.1);
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg,
+      rgba(0, 122, 204, 0.8) 0%,
+      rgba(0, 188, 212, 0.6) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg,
+      rgba(0, 122, 204, 1) 0%,
+      rgba(0, 188, 212, 0.8) 100%);
+  box-shadow:
+    0 6px 12px rgba(0, 122, 204, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.docs-sidebar::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .sidebar-header {

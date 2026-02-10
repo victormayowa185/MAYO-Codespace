@@ -44,12 +44,10 @@ const Navbar: React.FC = () => {
             GitHub
           </a>
 
-          {/* NEW: Theme Toggle Button */}
+         
           <button
             className="theme-toggle-btn"
             onClick={toggleDarkMode}
-            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-            aria-label="Toggle dark mode"
           >
             {isDarkMode ? <FiSun /> : <FiMoon />}
           </button>

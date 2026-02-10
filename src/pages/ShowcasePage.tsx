@@ -52,7 +52,7 @@ const ShowcasePage: React.FC = () => {
 
         <div className="hero-content">
           <h1 className="hero-title">
-            View <span className='gradient-text'> MAYO CodeSpace</span> in action.
+            View <span className='gradient-text'> MAYO CodeSpace</span>
           </h1>
           <p className="hero-subtitle">
             A fast, browser-based coding environment built for modern developers.
@@ -77,7 +77,7 @@ const ShowcasePage: React.FC = () => {
         <h2 className="section-title">What You Can Build</h2>
 
         <div className="features-grid">
-          {/* Feature 1: Live Code Editing */}
+         
           <div className="feature-card">
             <div className="feature-icon">
               <FaCode size={40} />

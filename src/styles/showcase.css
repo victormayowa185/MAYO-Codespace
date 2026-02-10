@@ -38,15 +38,12 @@
 }
 
 
-
-
-
-
 .showcase-page {
   min-height: 100vh;
   background: #ffffff; /* White background */
   font-family: 'Mulish', sans-serif;
-  color: #333333; /* Dark text */
+  color: #333333; 
+  overflow: hidden !important;
 }
 
 /* Hero Section */

@@ -2,12 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import LivePreview from '../components/LivePreview';
 import CodeEditor from '../components/CodeEditor';
+import { useTheme } from '../context/ThemeContext';
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 import '../styles/workspace.css';
 
 const WorkspacePage: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isPreviewVisible, setIsPreviewVisible] = useState(true);
+  const [activeEditorTab, setActiveEditorTab] = useState<'jsx' | 'css' | 'html'>('jsx');
+  
   const [code, setCode] = useState({
     jsx: `// Welcome to CodeWorkspace
 import React from 'react';
@@ -15,10 +19,10 @@ import React from 'react';
 function App() {
   return (
     <div className="app">
-      <h1>Hello, Developer!</h1>
+      <h1>Hello, this is MAYO Codespace!</h1>
       <p>Start coding your React components here.</p>
       <button onClick={() => alert('Welcome!')}>
-        Click Me
+        Start
       </button>
     </div>
   );
@@ -65,20 +69,29 @@ button:hover {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeWorkspace Project</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>MAYO Codespace</title>
 </head>
 <body>
   <div id="root"></div>
-  <script src="app.js"></script>
 </body>
 </html>`
   });
 
   // State for resizable panels
-  const [editorWidth, setEditorWidth] = useState(50); // percentage
+  const [editorWidth, setEditorWidth] = useState(50);
   const isResizing = useRef(false);
   const splitContainerRef = useRef<HTMLDivElement>(null);
+
+  // Handle fullscreen toggle
+  const handleFullscreenToggle = () => {
+    if (!isFullscreen) {
+      document.documentElement.requestFullscreen?.();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen?.();
+      setIsFullscreen(false);
+    }
+  };
 
   // Handle mouse down for resizing
   const handleResizeStart = (e: React.MouseEvent) => {
@@ -109,17 +122,6 @@ button:hover {
     document.removeEventListener('mouseup', handleResizeEnd);
   };
 
-  // Handle fullscreen toggle
-  const handleFullscreenToggle = () => {
-    if (!isFullscreen) {
-      document.documentElement.requestFullscreen?.();
-      setIsFullscreen(true);
-    } else {
-      document.exitFullscreen?.();
-      setIsFullscreen(false);
-    }
-  };
-
   // Handle escape key to exit fullscreen
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -146,9 +148,68 @@ button:hover {
     setCode(prev => ({ ...prev, [language]: value }));
   };
 
+  // Handle tab change from CodeEditor
+  const handleTabChange = (tab: 'jsx' | 'css' | 'html') => {
+    setActiveEditorTab(tab);
+  };
+
+  // Define keyboard shortcuts - MOVED AFTER ALL FUNCTION DEFINITIONS
+  const shortcutFeedback = useKeyboardShortcuts([
+    {
+      key: 'f',
+      ctrl: true,
+      handler: handleFullscreenToggle,
+      description: 'Toggle Fullscreen'
+    },
+    {
+      key: 'p',
+      ctrl: true,
+      shift: true,
+      handler: () => setIsPreviewVisible(!isPreviewVisible),
+      description: 'Toggle Preview'
+    },
+    {
+      key: '1',
+      ctrl: true,
+      handler: () => setActiveEditorTab('jsx'),
+      description: 'Switch to JSX tab'
+    },
+    {
+      key: '2',
+      ctrl: true,
+      handler: () => setActiveEditorTab('css'),
+      description: 'Switch to CSS tab'
+    },
+    {
+      key: '3',
+      ctrl: true,
+      handler: () => setActiveEditorTab('html'),
+      description: 'Switch to HTML tab'
+    },
+    {
+      key: 'd',
+      ctrl: true,
+      shift: true,
+      handler: toggleDarkMode,
+      description: 'Toggle Dark Mode'
+    }
+  ]);
+
   return (
     <div className={`workspace-page ${isDarkMode ? 'dark-mode' : ''}`}>
       {!isFullscreen && <Navbar />}
+
+      {/* Keyboard shortcut feedback overlay */}
+      {shortcutFeedback && (
+        <div className="keyboard-shortcut-overlay">
+          <span>{shortcutFeedback.description}</span>
+          <div className="shortcut-keys">
+            {shortcutFeedback.keys.map((key, index) => (
+              <kbd key={index}>{key}</kbd>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className={`workspace-container ${isFullscreen ? 'fullscreen' : ''}`}>
         
@@ -169,12 +230,12 @@ button:hover {
             <CodeEditor 
               code={code}
               onCodeChange={handleCodeChange}
-              isDarkMode={isDarkMode}
               onFullscreenToggle={handleFullscreenToggle}
               isFullscreen={isFullscreen}
-              onThemeToggle={() => setIsDarkMode(!isDarkMode)}
               onPreviewToggle={() => setIsPreviewVisible(!isPreviewVisible)}
               isPreviewVisible={isPreviewVisible}
+              activeTab={activeEditorTab}
+              onTabChange={handleTabChange}
             />
           </div>
 

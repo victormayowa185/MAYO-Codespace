@@ -1,6 +1,20 @@
 /* ALL dark mode styles in ONE file */
 
 /* Homepage dark mode */
+body.dark-mode .feature-title1 {
+  -webkit-text-fill-color: rgb(0, 164, 209) !important;
+}
+
+body.dark-mode .feature-title2 {
+  -webkit-text-fill-color: rgb(224, 72, 17) !important;
+
+}
+
+body.dark-mode .feature-title3 {
+  -webkit-text-fill-color: rgb(11, 153, 11) !important;
+
+}
+
 body.dark-mode .homepage {
   background: #0a0a0a;
 }
@@ -15,6 +29,10 @@ body.dark-mode .feature-description {
 
 body.dark-mode .icon {
   color: white;
+}
+
+body.dark-mode .hero-description{
+  color: rgba(255, 255, 255, 0.719);
 }
 
 body.dark-mode .btn-secondary {
@@ -33,6 +51,9 @@ body.dark-mode .hero-title {
 body.dark-mode .workspace-page {
   background: #0a0a0a;
 }
+
+
+
 
 /* Showcase dark mode */
 /* ========== SHOWCASE PAGE DARK MODE ========== */
@@ -421,4 +442,158 @@ body.dark-mode .tech-item {
 
 body.dark-mode .docs-cta {
   background: linear-gradient(135deg, #007acc8c, #00bbd434);
+}
+
+
+
+
+
+
+
+
+/* code editor css */
+
+/* ========== CODE EDITOR DARK MODE ========== */
+
+/* Code editor container */
+body.dark-mode .code-editor {
+  background: #1e1e1e;
+  border-color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Editor header */
+body.dark-mode .editor-header {
+  background: #252525;
+  border-bottom-color: #333;
+}
+
+/* Tab buttons */
+body.dark-mode .tab-btn {
+  color: #b0b0b0;
+  background: transparent;
+}
+
+body.dark-mode .tab-btn:hover {
+  background: rgba(0, 122, 204, 0.2);
+  color: #4da6ff;
+}
+
+body.dark-mode .tab-btn.active {
+  background: #007acc;
+  color: white;
+}
+
+/* Control buttons */
+body.dark-mode .control-btn {
+  background: #333;
+  border-color: #444;
+  color: #ffffff;
+}
+
+body.dark-mode .control-btn:hover {
+  background: #007acc;
+  border-color: #007acc;
+  color: white;
+}
+
+/* Monaco Editor specific overrides for dark mode */
+body.dark-mode .monaco-editor,
+body.dark-mode .monaco-editor .margin,
+body.dark-mode .monaco-editor .monaco-editor-background {
+  background-color: #1e1e1e !important;
+}
+
+/* Make code text white in dark mode */
+body.dark-mode .monaco-editor .view-lines,
+body.dark-mode .monaco-editor .mtk1 { /* mtk1 is the default token class */
+  color: #ffffff !important;
+}
+
+/* Syntax highlighting colors for dark mode */
+body.dark-mode .monaco-editor .mtk2 { /* Keywords */
+  color: #569CD6 !important;
+}
+
+body.dark-mode .monaco-editor .mtk3 { /* Comments */
+  color: #6A9955 !important;
+}
+
+body.dark-mode .monaco-editor .mtk4 { /* Strings */
+  color: #CE9178 !important;
+}
+
+body.dark-mode .monaco-editor .mtk5 { /* Numbers */
+  color: #B5CEA8 !important;
+}
+
+body.dark-mode .monaco-editor .mtk6 { /* Types */
+  color: #4EC9B0 !important;
+}
+
+body.dark-mode .monaco-editor .mtk7 { /* Functions */
+  color: #DCDCAA !important;
+}
+
+body.dark-mode .monaco-editor .mtk8 { /* Variables */
+  color: #9CDCFE !important;
+}
+
+/* Line numbers in dark mode */
+body.dark-mode .monaco-editor .margin-view-overlays .line-numbers {
+  color: #858585 !important;
+}
+
+/* Current line highlight */
+body.dark-mode .monaco-editor .view-overlays .current-line {
+  border-color: #2A2D2E !important;
+  background-color: #2A2D2E !important;
+}
+
+/* Selection color */
+body.dark-mode .monaco-editor .selected-text {
+  background-color: #264F78 !important;
+}
+
+/* Cursor color */
+body.dark-mode .monaco-editor .cursor {
+  background-color: #FFFFFF !important;
+}
+
+/* Scrollbar in dark mode */
+body.dark-mode .monaco-editor .monaco-scrollable-element .scrollbar.vertical .slider {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-mode .monaco-editor .monaco-scrollable-element .scrollbar.horizontal .slider {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Editor status bar */
+body.dark-mode .editor-status {
+  background: #252525;
+  border-top-color: #333;
+  color: #888;
+}
+
+/* If you have any loading/placeholder text */
+body.dark-mode .editor-loading {
+  background: #1e1e1e;
+  color: #888;
+}
+
+/* Tab icons */
+body.dark-mode .tab-icon {
+  color: currentColor;
+}
+
+/* For the workspace page background */
+body.dark-mode .code-editor-panel {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+/* Make sure the Monaco editor wrapper has proper background */
+body.dark-mode .monaco-editor-container {
+  background: #1e1e1e;
 }
