@@ -39,8 +39,3 @@ export const useKeyboardShortcuts = (shortcuts: Shortcut[]) => {
   }, [shortcuts]);
 };
 
-// Usage example:
-// useKeyboardShortcuts([
-//   { key: 's', ctrl: true, handler: () => console.log('Ctrl+S pressed') },
-//   { key: 'f', ctrl: true, handler: () => console.log('Ctrl+F pressed') },
-// ]);

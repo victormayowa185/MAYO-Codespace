@@ -132,8 +132,8 @@ const DocsPage: React.FC = () => {
             <MdBook className="badge-icon" />
             COMPREHENSIVE DOCUMENTATION
           </div>
-          <h1 className="hero-title animate-slide-up">
-            Master <span className="gradient-text">MAYO Codespace</span>
+          <h1 className="hero-title animate-slide-up ">
+            MAYO <span className="gradient-text">Codespace</span>
           </h1>
           <p className="hero-subtitle animate-slide-up-delay">
             Everything you need to build, test, and deploy with our professional browser-based IDE.

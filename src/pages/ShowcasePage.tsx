@@ -48,10 +48,11 @@ const ShowcasePage: React.FC = () => {
         {/* <video className="hero-video-bg" autoPlay muted loop>
           <source src="/videos/terminal-bg.mp4" type="video/mp4" />
         </video> */}
+         <div className="hero-bg-animation"></div>
 
         <div className="hero-content">
           <h1 className="hero-title">
-            See CodeWorkspace in Action
+            View <span className='gradient-text'> MAYO CodeSpace</span> in action.
           </h1>
           <p className="hero-subtitle">
             A fast, browser-based coding environment built for modern developers.
@@ -87,10 +88,24 @@ const ShowcasePage: React.FC = () => {
               Real-time compilation with Babel in the browser.
             </p>
             <div className="feature-video">
-              {/* Add your video here */}
-              {/* <video controls muted>
-                <source src="/videos/live-editing.mp4" type="video/mp4" />
-              </video> */}
+
+              {/* Video wrapper with your actual video */}
+              <div className="video-wrapper">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="hero-video"
+                  poster="/videos/poster.jpg"
+                >
+                  <source src="/video2.mp4" type="video/mp4" />
+                  <source src="/videos/coding-hero.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+                <div className="video-overlay"></div>
+              </div>
+
               <div style={{
                 width: '100%',
                 height: '100%',
@@ -260,9 +275,9 @@ const ShowcasePage: React.FC = () => {
       </section>
 
       <Footer />
-      
+
     </div>
-  ); 
+  );
 };
 
 export default ShowcasePage;

@@ -91,12 +91,12 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #007acc, #00bcd4, #9c27b0);
+  background: linear-gradient(135deg, #f44336, #0089ce, #4caf50);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+  animation: gradient-shift 2s ease infinite;
 }
 
 @keyframes gradient-shift {
@@ -1189,6 +1189,15 @@
   .shortcuts-grid {
     grid-template-columns: 1fr;
   }
+
+  .cta-button-primary,
+  .cta-button-secondary {
+    width: 70%;
+    margin: 10px 0;
+    justify-content: center;
+  }
+
+
 }
 
 @media (max-width: 480px) {
@@ -1206,8 +1215,13 @@
 
   .cta-button-primary,
   .cta-button-secondary {
-    width: 100%;
+    width: 70%;
     margin: 10px 0;
     justify-content: center;
   }
+
+  feature-demo {
+    width: 80%;
+  }
+
 }
