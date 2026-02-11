@@ -1,5 +1,5 @@
 // src/pages/ShowcasePage.tsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -14,31 +14,14 @@ import {
   MdSpeed,
   MdVideocam,
 } from 'react-icons/md';
-import { FaTerminal, FaCode, FaPlay } from 'react-icons/fa';
-import { SiReact, SiJavascript, SiCss3 } from 'react-icons/si';
+import { FaTerminal, FaCode } from 'react-icons/fa';
 import '../styles/showcase.css';
 
 const ShowcasePage: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Load theme from localStorage or system preference
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
-  };
-
   return (
-    <div className={`showcase-page ${isDarkMode ? 'dark-mode' : ''}`}>
-      <Navbar onThemeToggle={toggleTheme} isDarkMode={isDarkMode} />
+    <div className="showcase-page">
+      {/* Navbar controls theme globally */}
+      <Navbar />
 
       {/* Hero Section */}
       <section className="showcase-hero">
@@ -69,47 +52,48 @@ const ShowcasePage: React.FC = () => {
         <h2 className="section-title">What You Can Build</h2>
 
         <div className="features-grid">
-          {/* Feature 1: Live Code Editing */}
           <div className="feature-card">
             <div className="feature-icon"><FaCode size={40} /></div>
             <h3 className="feature-title">Live Code Editing</h3>
             <p className="feature-desc">
-              Write React components in JSX and see changes instantly. Real-time compilation with Babel in the browser.
+              Write React components in JSX and see changes instantly.
+              Real-time compilation in the browser.
             </p>
           </div>
 
-          {/* Feature 2: Multi-file Workspace */}
           <div className="feature-card">
             <div className="feature-icon"><MdFolderOpen size={40} /></div>
             <h3 className="feature-title">Multi-file Workspace</h3>
             <p className="feature-desc">
-              Switch between JSX, CSS, and HTML files seamlessly. Professional IDE layout with file management.
+              Switch between JSX, CSS, and HTML files seamlessly
+              with a professional IDE layout.
             </p>
           </div>
 
-          {/* Feature 3: Fast Preview */}
           <div className="feature-card">
             <div className="feature-icon"><MdFlashOn size={40} /></div>
             <h3 className="feature-title">Instant Preview</h3>
             <p className="feature-desc">
-              See your React app render live as you type. No page reloads needed—just pure development speed.
+              See your React app render live as you type.
+              No reloads, just speed.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Walkthrough Section */}
+      {/* Walkthrough */}
       <section className="walkthrough-section">
         <div className="walkthrough-container">
           <h2 className="section-title">Complete Walkthrough</h2>
-          <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 30px', lineHeight: '1.6' }}>
+          <p className="walkthrough-subtitle">
             Watch how to go from an idea to a working React component in under 60 seconds.
           </p>
-          <div className="walkthrough-video" style={{ width: '100%', height: '400px', background: '#1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-            <div style={{ textAlign: 'center' }}>
+
+          <div className="walkthrough-video">
+            <div className="video-placeholder">
               <MdVideocam size={64} />
-              <div style={{ marginTop: '20px', fontSize: '1.2rem' }}>Full Walkthrough Video</div>
-              <div style={{ marginTop: '10px', opacity: 0.7 }}>(30-60 seconds demo)</div>
+              <div>Full Walkthrough Video</div>
+              <small>(30–60 seconds demo)</small>
             </div>
           </div>
         </div>
@@ -119,17 +103,19 @@ const ShowcasePage: React.FC = () => {
       <section className="differentiators">
         <h2 className="section-title">Built for Developers</h2>
         <div className="diff-grid">
-          <div className="diff-item"><MdComputer size={24} /><p className="diff-text">No Setup Required</p></div>
-          <div className="diff-item"><FaTerminal size={24} /><p className="diff-text">Runs in Browser</p></div>
-          <div className="diff-item"><MdSpeed size={24} /><p className="diff-text">Lightweight & Fast</p></div>
-          <div className="diff-item"><MdSecurity size={24} /><p className="diff-text">Sandboxed Execution</p></div>
+          <div className="diff-item"><MdComputer /><p>No Setup Required</p></div>
+          <div className="diff-item"><FaTerminal /><p>Runs in Browser</p></div>
+          <div className="diff-item"><MdSpeed /><p>Lightweight & Fast</p></div>
+          <div className="diff-item"><MdSecurity /><p>Sandboxed Execution</p></div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="cta-section">
         <h2 className="cta-title">Ready to Code?</h2>
-        <p className="cta-subtitle">Experience professional-grade development in your browser.</p>
+        <p className="cta-subtitle">
+          Experience professional-grade development in your browser.
+        </p>
         <Link to="/workspace" className="cta-button">
           Start Coding Now <MdArrowForward size={20} />
         </Link>
