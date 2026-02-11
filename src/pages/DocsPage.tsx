@@ -588,7 +588,7 @@ function Welcome() {
                 </div>
 
                 <div className="github-link">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/victormayowa185" target="_blank" rel="noopener noreferrer">
                     <FaGithub /> Contribute on GitHub
                   </a>
                 </div>

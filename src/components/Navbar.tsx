@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
             Documentation
           </Link>
           <a 
-            href="https://github.com/yourusername"
+            href="https://github.com/victormayowa185"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link github-link"
