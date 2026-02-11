@@ -33,7 +33,7 @@
 /* Workspace Container */
 .workspace-container {
   display: flex;
-  height: calc(90vh - 20px); /* Subtract navbar height */
+  height: calc(90vh - 22px); /* Subtract navbar height */
   margin-top: 70px;
   position: relative;
   overflow: hidden;
