@@ -11,6 +11,8 @@ const WorkspacePage: React.FC = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isPreviewVisible, setIsPreviewVisible] = useState(true);
   const [activeEditorTab, setActiveEditorTab] = useState<'jsx' | 'css' | 'html'>('jsx');
+  const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+  const feedbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const [code, setCode] = useState({
     jsx: `// Welcome to CodeWorkspace
@@ -91,6 +93,25 @@ button:hover {
       document.exitFullscreen?.();
       setIsFullscreen(false);
     }
+    setFeedbackMessage('Fullscreen toggled');
+    clearFeedbackTimeout();
+  };
+
+  // Clear feedback timeout
+  const clearFeedbackTimeout = () => {
+    if (feedbackTimeoutRef.current) {
+      clearTimeout(feedbackTimeoutRef.current);
+      feedbackTimeoutRef.current = null;
+    }
+  };
+
+  // Show feedback message
+  const showFeedback = (message: string) => {
+    setFeedbackMessage(message);
+    clearFeedbackTimeout();
+    feedbackTimeoutRef.current = setTimeout(() => {
+      setFeedbackMessage(null);
+    }, 2000);
   };
 
   // Handle mouse down for resizing
@@ -143,6 +164,13 @@ button:hover {
     };
   }, [isFullscreen]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      clearFeedbackTimeout();
+    };
+  }, []);
+
   // Handle code change
   const handleCodeChange = (language: 'jsx' | 'css' | 'html', value: string) => {
     setCode(prev => ({ ...prev, [language]: value }));
@@ -151,47 +179,48 @@ button:hover {
   // Handle tab change from CodeEditor
   const handleTabChange = (tab: 'jsx' | 'css' | 'html') => {
     setActiveEditorTab(tab);
+    showFeedback(`Switched to ${tab.toUpperCase()} tab`);
   };
 
-  // Define keyboard shortcuts - MOVED AFTER ALL FUNCTION DEFINITIONS
-  const shortcutFeedback = useKeyboardShortcuts([
+  // Handle preview toggle
+  const handlePreviewToggle = () => {
+    setIsPreviewVisible(!isPreviewVisible);
+    showFeedback(`Preview ${!isPreviewVisible ? 'shown' : 'hidden'}`);
+  };
+
+  // Define keyboard shortcuts - REMOVED description property
+  useKeyboardShortcuts([
     {
       key: 'f',
       ctrl: true,
-      handler: handleFullscreenToggle,
-      description: 'Toggle Fullscreen'
+      handler: handleFullscreenToggle
     },
     {
       key: 'p',
       ctrl: true,
       shift: true,
-      handler: () => setIsPreviewVisible(!isPreviewVisible),
-      description: 'Toggle Preview'
+      handler: handlePreviewToggle
     },
     {
       key: '1',
       ctrl: true,
-      handler: () => setActiveEditorTab('jsx'),
-      description: 'Switch to JSX tab'
+      handler: () => handleTabChange('jsx')
     },
     {
       key: '2',
       ctrl: true,
-      handler: () => setActiveEditorTab('css'),
-      description: 'Switch to CSS tab'
+      handler: () => handleTabChange('css')
     },
     {
       key: '3',
       ctrl: true,
-      handler: () => setActiveEditorTab('html'),
-      description: 'Switch to HTML tab'
+      handler: () => handleTabChange('html')
     },
     {
       key: 'd',
       ctrl: true,
       shift: true,
-      handler: toggleDarkMode,
-      description: 'Toggle Dark Mode'
+      handler: toggleDarkMode
     }
   ]);
 
@@ -200,14 +229,9 @@ button:hover {
       {!isFullscreen && <Navbar />}
 
       {/* Keyboard shortcut feedback overlay */}
-      {shortcutFeedback && (
+      {feedbackMessage && (
         <div className="keyboard-shortcut-overlay">
-          <span>{shortcutFeedback.description}</span>
-          <div className="shortcut-keys">
-            {shortcutFeedback.keys.map((key, index) => (
-              <kbd key={index}>{key}</kbd>
-            ))}
-          </div>
+          <span>{feedbackMessage}</span>
         </div>
       )}
 
@@ -232,7 +256,7 @@ button:hover {
               onCodeChange={handleCodeChange}
               onFullscreenToggle={handleFullscreenToggle}
               isFullscreen={isFullscreen}
-              onPreviewToggle={() => setIsPreviewVisible(!isPreviewVisible)}
+              onPreviewToggle={handlePreviewToggle}
               isPreviewVisible={isPreviewVisible}
               activeTab={activeEditorTab}
               onTabChange={handleTabChange}
