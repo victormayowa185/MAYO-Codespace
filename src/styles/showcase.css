@@ -358,3 +358,100 @@
     font-size: 2rem;
   }
 }
+
+
+
+
+
+/* ===== WHAT YOU CAN BUILD – PROJECT CARDS ===== */
+
+.feature-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle top accent */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(135deg, #007acc, #4caf50);
+}
+
+/* hover lift */
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15);
+}
+
+/* icon */
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0, 122, 204, 0.15), rgba(76, 175, 80, 0.15));
+  color: #007acc;
+  font-size: 2rem;
+  margin-bottom: 22px;
+}
+
+/* title */
+.feature-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+/* description */
+.feature-desc {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* tags */
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.feature-tags span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(0, 122, 204, 0.1);
+  color: #007acc;
+}
+
+/* action link */
+.feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #007acc;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.feature-link:hover {
+  gap: 12px;
+  color: #005d99;
+}

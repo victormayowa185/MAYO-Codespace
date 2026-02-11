@@ -6,15 +6,13 @@ import Footer from '../components/Footer';
 import {
   MdCode,
   MdPlayArrow,
-  MdFolderOpen,
-  MdFlashOn,
   MdSecurity,
   MdArrowForward,
   MdComputer,
   MdSpeed,
   MdVideocam,
 } from 'react-icons/md';
-import { FaTerminal, FaCode } from 'react-icons/fa';
+import { FaTerminal, FaList, FaCalculator, FaPlus } from 'react-icons/fa';
 import '../styles/showcase.css';
 
 const ShowcasePage: React.FC = () => {
@@ -47,36 +45,62 @@ const ShowcasePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Features */}
+      {/* What You Can Build - Project Examples */}
       <section id="features" className="showcase-features">
         <h2 className="section-title">What You Can Build</h2>
 
         <div className="features-grid">
+          {/* Project 1: Counter App */}
           <div className="feature-card">
-            <div className="feature-icon"><FaCode size={40} /></div>
-            <h3 className="feature-title">Live Code Editing</h3>
+            <div className="feature-icon"><FaPlus size={40} /></div>
+            <h3 className="feature-title">Interactive Counter</h3>
             <p className="feature-desc">
-              Write React components in JSX and see changes instantly.
-              Real-time compilation in the browser.
+              Build a React counter with useState, buttons, and live updates.
+              Perfect for learning state management.
             </p>
+            <div className="feature-tags">
+              <span>React</span>
+              <span>useState</span>
+              <span>Events</span>
+            </div>
+            <Link to="/workspace?template=counter" className="feature-link">
+              Try this template →
+            </Link>
           </div>
 
+          {/* Project 2: Todo List */}
           <div className="feature-card">
-            <div className="feature-icon"><MdFolderOpen size={40} /></div>
-            <h3 className="feature-title">Multi-file Workspace</h3>
+            <div className="feature-icon"><FaList size={40} /></div>
+            <h3 className="feature-title">Todo List App</h3>
             <p className="feature-desc">
-              Switch between JSX, CSS, and HTML files seamlessly
-              with a professional IDE layout.
+              Create a fully functional todo list with add, delete, and complete features.
+              Includes CSS styling.
             </p>
+            <div className="feature-tags">
+              <span>React</span>
+              <span>CSS</span>
+              <span>Arrays</span>
+            </div>
+            <Link to="/workspace?template=todo" className="feature-link">
+              Try this template →
+            </Link>
           </div>
 
+          {/* Project 3: Calculator */}
           <div className="feature-card">
-            <div className="feature-icon"><MdFlashOn size={40} /></div>
-            <h3 className="feature-title">Instant Preview</h3>
+            <div className="feature-icon"><FaCalculator size={40} /></div>
+            <h3 className="feature-title">Calculator</h3>
             <p className="feature-desc">
-              See your React app render live as you type.
-              No reloads, just speed.
+              Build a working calculator with operations, clear function, and responsive design.
             </p>
+            <div className="feature-tags">
+              <span>JSX</span>
+              <span>Logic</span>
+              <span>CSS Grid</span>
+            </div>
+            <Link to="/workspace?template=calculator" className="feature-link">
+              Try this template →
+            </Link>
           </div>
         </div>
       </section>
