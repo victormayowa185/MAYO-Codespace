@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { TbHexagonLetterM } from "react-icons/tb";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 import { useTheme } from '../context/ThemeContext';
-import '../styles/Navbar.css';
+import '../styles/navbar.css';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
