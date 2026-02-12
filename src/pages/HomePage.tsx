@@ -86,7 +86,7 @@ const HomePage: React.FC = () => {
               <br />
               <span className="hero-word">Code</span>
             </h1>
-            <p className="hero-description gradient-text">
+            <p className="hero-description">
               A browser-based IDE for learning, prototyping,
               and sharing React components with zero setup.
               Built for modern web development.
