@@ -10,7 +10,6 @@ import {
   MdArrowForward,
   MdComputer,
   MdSpeed,
-  MdVideocam,
 } from 'react-icons/md';
 import { FaTerminal, FaList, FaCalculator, FaPlus } from 'react-icons/fa';
 import '../styles/showcase.css';
@@ -114,12 +113,17 @@ const ShowcasePage: React.FC = () => {
           </p>
 
           <div className="walkthrough-video">
-            <div className="video-placeholder">
-              <MdVideocam size={64} />
-              <div>Full Walkthrough Video</div>
-              <small>(30–60 seconds demo)</small>
-            </div>
+            <video
+              src="/final1.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              className="walkthrough-video-player"
+            />
           </div>
+
         </div>
       </section>
 

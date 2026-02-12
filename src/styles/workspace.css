@@ -30,10 +30,10 @@
   color: var(--text-light);
 }
 
-/* Workspace Container */
+/* Workspace Container — FIXED HEIGHT */
 .workspace-container {
   display: flex;
-  height: calc(90vh - 22px); /* Subtract navbar height */
+  height: calc(98vh - 70px); /* ← FIXED: now fills exactly below navbar */
   margin-top: 70px;
   position: relative;
   overflow: hidden;
@@ -47,17 +47,15 @@
 
 /* ========== SPLIT LAYOUT ========== */
 
-/* Split Layout Container */
+/* Split Layout Container — FIXED PADDING */
 .split-layout {
   display: flex;
   height: 100%;
   width: 100%;
- padding-left: 9px;
- padding-right: 40px !important;
- padding-top: 10px;
-
+  padding: 10px 20px 10px 9px; /* ← FIXED: consistent, no huge right padding */
   position: relative;
-  transition: all 0.3s ease
+  transition: all 0.3s ease;
+  gap: 8px; /* replaces resizer margin */
 }
 
 /* Single panel layout when preview is hidden */
@@ -84,7 +82,7 @@
   position: relative;
   flex-shrink: 0;
   transition: background 0.2s;
-  margin: 0 8px;
+  border-radius: 4px;
 }
 
 .resizer:hover,
@@ -118,137 +116,83 @@
   background: var(--text-light);
 }
 
-.code-editor-panel {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  transition: width 0.1s ease; /* Smooth resize */
-}
-
-.dark-mode .code-editor-panel {
-  background: #1e1e1e;
-  border-color: var(--border-dark);
-  box-shadow: var(--shadow-dark);
-}
-
+/* Panels — base styles (desktop) */
+.code-editor-panel,
 .live-preview-panel {
-  flex-shrink: 0;
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
-  background: white;
+  min-width: 0;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  transition: width 0.1s ease; /* Smooth resize */
 }
 
+.dark-mode .code-editor-panel,
 .dark-mode .live-preview-panel {
-  background: #1a1a1a;
+  background: #1e1e1e; /* kept as in original */
   border-color: var(--border-dark);
   box-shadow: var(--shadow-dark);
 }
 
-/* Fullscreen adjustments */
-.fullscreen .split-layout {
-  padding: 0;
-}
-
-.fullscreen .code-editor-panel,
-.fullscreen .live-preview-panel {
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-}
-
-/* Update Live status to use blue color instead of green */
-.status {
-  background: (linear-gradient5deg, green, black); /* Changed from green to blue */
-  padding: 4px 16px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  animation: live-glow 0.2s infinite alternate;
-  box-shadow: 0 0 10px rgba(0, 122, 204, 0.5); /* Blue glow */
-  font-family: 'Mulish', sans-serif;
-}
-
-@keyframes live-glow {
-  0% {
-    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
-    transform: scale(0.98);
-  }
-  100% {
-    box-shadow: 0 0 15px rgba(0, 122, 204, 0.8), 0 0 30px rgba(0, 122, 204, 0.3);
-    transform: scale(1.02);
-  }
-}
-
 /* ========== RESPONSIVE DESIGN ========== */
+/* FIXED: mobile layout now shows preview and shares space equally */
 
 @media (max-width: 1024px) {
   .split-layout {
     flex-direction: column;
+    padding: 10px;           /* clean padding */
+    gap: 8px;
   }
-  
-  .split-layout.single-panel {
-    padding: 0;
-  }
-  
-  .code-editor-panel:not(:only-child),
+
+  /* Override any inline widths – force both panels to 100% width */
+  .code-editor-panel,
   .live-preview-panel {
-    width: 100% !important;
-    height: 50vh;
+    width: 100% !important;  /* ← FIXED: forces full width */
+    height: auto;            /* let flex control height */
+    flex: 1 1 0;            /* ← FIXED: both panels share equally */
+    min-height: 0;
   }
-  
-  /* When preview is hidden on mobile, code editor takes full screen */
-  .split-layout.single-panel .code-editor-panel {
-    height: 100vh !important;
-    width: 100% !important;
-  }
-  
+
+  /* Resizer becomes horizontal */
   .resizer {
     width: 100%;
     height: 8px;
-    margin: 8px 0;
     cursor: row-resize;
+    margin: 0;
   }
-  
+
   .resizer::before {
     width: 40px;
     height: 2px;
+  }
+
+  /* When preview is hidden on mobile, editor takes full height */
+  .split-layout.single-panel .code-editor-panel {
+    flex: 1 1 100%;
+    height: 100% !important;
   }
 }
 
 @media (max-width: 768px) {
   .split-layout {
-    padding: 10px;
+    padding: 8px;
   }
-  
-  .split-layout.single-panel {
-    padding: 0;
-  }
-  
+
+  /* Additional small‑screen refinements */
   .code-editor-panel:not(:only-child),
   .live-preview-panel {
-    height: calc(50vh - 10px);
+    height: auto;           /* overrides any fixed height */
   }
-  
+
   .split-layout.single-panel .code-editor-panel {
     height: 100vh !important;
   }
 }
 
-
-
 /* ========== KEYBOARD SHORTCUT FEEDBACK ========== */
-
-/* Keyboard shortcut feedback overlay */
+/* (unchanged, keep as is) */
 .keyboard-shortcut-overlay {
   position: fixed;
   top: 20px;
@@ -424,22 +368,18 @@
   transform: translateX(-50%);
 }
 
-
-/* ========== RESPONSIVE ADJUSTMENTS ========== */
-
+/* ========== RESPONSIVE ADJUSTMENTS FOR SHORTCUTS ========== */
 @media (max-width: 1024px) {
-  /* Adjust shortcut hints for mobile */
   .shortcut-hint {
-    display: none; /* Hide on mobile to save space */
+    display: none;
   }
   
   .control-shortcut {
-    display: none; /* Hide on mobile */
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
-  /* Adjust keyboard feedback for mobile */
   .keyboard-shortcut-overlay {
     top: 10px;
     right: 10px;
@@ -448,5 +388,27 @@
   }
 }
 
+/* Live status glow (blue) – unchanged */
+.status {
+  background: (linear-gradient5deg, green, black);
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  animation: live-glow 0.2s infinite alternate;
+  box-shadow: 0 0 10px rgba(0, 122, 204, 0.5);
+  font-family: 'Mulish', sans-serif;
+}
 
-
+@keyframes live-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+    transform: scale(0.98);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(0, 122, 204, 0.8), 0 0 30px rgba(0, 122, 204, 0.3);
+    transform: scale(1.02);
+  }
+}
