@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TbHexagonLetterM } from "react-icons/tb";
-import '../styles/Footer.css';
+import '../styles/footer.css';
 
 const Footer: React.FC = () => {
   return (
