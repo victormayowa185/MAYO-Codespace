@@ -48,8 +48,13 @@ body {
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .footer-tagline {
@@ -145,6 +150,7 @@ body {
   .footer-right {
     gap: 2rem;
   }
+
   .footer-column {
     min-width: 130px;
   }
@@ -158,54 +164,69 @@ body {
 
   .footer-top {
     flex-direction: column;
-    align-items: center;    /* ← center everything horizontally */
-    gap: 2.5rem;           /* ← increased spacing for breathing room */
-    text-align: center;    /* ← ensures all text inside is centered */
+    align-items: center;
+    /* ← center everything horizontally */
+    gap: 2.5rem;
+    /* ← increased spacing for breathing room */
+    text-align: center;
+    /* ← ensures all text inside is centered */
   }
 
   .footer-left {
     display: flex;
     flex-direction: column;
-    align-items: center;   /* ← center logo & tagline */
+    align-items: center;
+    /* ← center logo & tagline */
     min-width: 100%;
   }
 
   .footer-tagline {
-    margin: 0 auto;        /* ← center the tagline block */
+    margin: 0 auto;
+    /* ← center the tagline block */
   }
 
   .footer-right {
     justify-content: center;
     width: 100%;
-    gap: 2rem;            /* ← consistent spacing between columns */
+    gap: 2rem;
+    /* ← consistent spacing between columns */
   }
 
   .footer-column {
-    min-width: 140px;     /* ← slightly wider for easier tapping */
+    min-width: 140px;
+    /* ← slightly wider for easier tapping */
     text-align: center;
   }
 
   .footer-links-group {
-    align-items: center;  /* ← center links under each title */
+    align-items: center;
+    /* ← center links under each title */
   }
 }
 
 /* ---------- RESPONSIVE (SMALL PHONES) ---------- */
 @media (max-width: 480px) {
   .footer {
-    padding: 2.5rem 1rem 1rem; /* ← effective padding on all sides */
+    padding: 2.5rem 1rem 1rem;
+    /* ← effective padding on all sides */
   }
 
   .footer-right {
-    flex-direction: row;       /* keep columns side‑by‑side if space allows */
-    flex-wrap: wrap;          /* allow wrapping gracefully */
+    flex-direction: row;
+    /* keep columns side‑by‑side if space allows */
+    flex-wrap: wrap;
+    /* allow wrapping gracefully */
     justify-content: center;
     gap: 1.5rem;
+
   }
 
   .footer-column {
-    min-width: 120px;
-    max-width: 160px;
+    min-width: 120px !important;
+    max-width: 160px !important;
+    padding-right: 3rem !important;
+    padding-left: 0 !important;
+   
   }
 
   .footer-column-title {
@@ -220,5 +241,13 @@ body {
   .social-icon {
     width: 36px;
     height: 36px;
+  }
+
+  .footer-tagline {
+    padding-right: 2.5rem !important;
+  }
+
+  .footer-copyright{
+    padding-right: 2rem ;
   }
 }

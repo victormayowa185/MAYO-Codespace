@@ -203,7 +203,9 @@ const DocsPage: React.FC = () => {
         'autocomplete',
         'code formatting',
         'syntax highlighting',
-        'user guide'
+        'user guide',
+        'shortcut',
+        'guide'
       ]
     },
     {
@@ -223,6 +225,7 @@ const DocsPage: React.FC = () => {
     {
       section: 'about',
       keywords: [
+        'ide',
         'mayo codespace',
         'browser ide',
         'online ide',

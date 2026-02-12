@@ -24,7 +24,7 @@ body.dark-mode .features-section {
 }
 
 body.dark-mode .feature-description {
-  color: white;
+  color: white ;
 }
 
 body.dark-mode .icon {
@@ -32,7 +32,7 @@ body.dark-mode .icon {
 }
 
 body.dark-mode .hero-description {
-  color: rgba(255, 255, 255, 0.719);
+  color: white !important;
 }
 
 body.dark-mode .btn-secondary {
