@@ -285,14 +285,12 @@
   text-align: center;
 }
 
-.walkthrough-video {
+.walkthrough-video-player {
   width: 100%;
-  max-width: 800px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 40px auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  background: #000;
+  height: auto;
+  display: block;        /* removes extra space below the video */
+  object-fit: cover;     /* optional: ensures the video fills the box without distortion */
+  object-position: center; /* keeps the main subject (the man) centered if cropping occurs */
 }
 
 .video-placeholder {
