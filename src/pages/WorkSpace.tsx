@@ -12,8 +12,9 @@ const WorkspacePage: React.FC = () => {
   const [isPreviewVisible, setIsPreviewVisible] = useState(true);
   const [activeEditorTab, setActiveEditorTab] = useState<'jsx' | 'css' | 'html'>('jsx');
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
-  const feedbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
+  const feedbackTimeoutRef = useRef<number | null>(null);
+
+
   const [code, setCode] = useState({
     jsx: `// Welcome to CodeWorkspace
 import React from 'react';
@@ -236,22 +237,22 @@ button:hover {
       )}
 
       <div className={`workspace-container ${isFullscreen ? 'fullscreen' : ''}`}>
-        
-        <div 
+
+        <div
           className={`split-layout ${!isPreviewVisible ? 'single-panel' : ''}`}
           ref={splitContainerRef}
           style={{ cursor: isResizing.current ? 'col-resize' : 'default' }}
         >
-          
+
           {/* Code Editor Panel */}
-          <div 
+          <div
             className="code-editor-panel"
-            style={{ 
+            style={{
               width: isPreviewVisible ? `${editorWidth}%` : '100%',
               height: isPreviewVisible ? '100%' : '100%'
             }}
           >
-            <CodeEditor 
+            <CodeEditor
               code={code}
               onCodeChange={handleCodeChange}
               onFullscreenToggle={handleFullscreenToggle}
@@ -265,7 +266,7 @@ button:hover {
 
           {/* Resizer handle */}
           {isPreviewVisible && (
-            <div 
+            <div
               className="resizer"
               onMouseDown={handleResizeStart}
             />
@@ -273,11 +274,11 @@ button:hover {
 
           {/* Live Preview Panel */}
           {isPreviewVisible && (
-            <div 
+            <div
               className="live-preview-panel"
               style={{ width: `${100 - editorWidth}%` }}
             >
-              <LivePreview 
+              <LivePreview
                 jsxCode={code.jsx}
                 cssCode={code.css}
                 htmlCode={code.html}
