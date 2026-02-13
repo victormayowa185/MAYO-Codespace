@@ -59,7 +59,7 @@
   font-family: 'Mulish', sans-serif;
   color: #333333;
   overflow-x: hidden;
-  /* Changed from hidden to allow vertical scroll */
+  overflow-y: visible;
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -154,11 +154,12 @@
 /* ==================== FEATURES SECTION ==================== */
 .showcase-features {
   position: relative;
-  padding: 80px 20px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 7rem !important;
   background: #ffffff;
-  /* Added solid background */
+   overflow-y: visible !important;
 }
 
 /* ==================== SECTION TITLE ==================== */
@@ -167,7 +168,6 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 40px;
-  /* Reduced from 60px */
   color: #333333;
 }
 
@@ -175,27 +175,26 @@
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  /* Reduced from 350px for better responsiveness */
-  gap: 30px;
+  gap: 90px;
   margin-top: 40px;
+  height: 100% !important;
+  padding-right: 1rem !important;
 }
 
 /* ==================== FEATURE CARD - FIXED ==================== */
 .feature-card {
   display: flex;
   flex-direction: column;
-  min-height: 280px;
-  /* Added minimum height */
+  max-height: 420px !important; 
+  justify-content: cewnter;       
   padding: 30px;
   border-radius: 12px;
   background: #f8f9fa;
-  /* Changed to solid background */
-  border: 1px solid #e0e0e0;
-  /* Added visible border */
+  border: 8px solid #e0e0e0 !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  /* Added shadow for visibility */
   transition: all 0.3s;
   color: #333333;
+ 
 }
 
 .feature-card:hover {
@@ -209,9 +208,7 @@
   margin-bottom: 20px;
   color: #007acc;
   display: flex;
-  /* Added */
   align-items: center;
-  /* Added */
 }
 
 .feature-icon svg {
@@ -224,14 +221,12 @@
   font-weight: 700;
   margin-bottom: 10px;
   color: #333333;
-  /* Explicit color */
 }
 
 .feature-desc {
   font-size: 1rem;
   margin-bottom: 15px;
   color: #666666;
-  /* Explicit color */
   line-height: 1.5;
 }
 
@@ -250,7 +245,6 @@
   font-size: 0.8rem;
   font-weight: 600;
   border: 1px solid rgba(0, 122, 204, 0.2);
-  /* Added border for visibility */
 }
 
 .feature-link {
@@ -261,7 +255,7 @@
   align-items: center;
   transition: all 0.3s;
   margin-top: auto;
-  /* Pushes link to bottom */
+  margin-bottom: 20px;      /* ⬅ ADDED – space between link and bottom border */
 }
 
 .feature-link:hover {
@@ -285,12 +279,24 @@
   text-align: center;
 }
 
+/* ----- Video container – base styles for ALL screen sizes ----- */
+.walkthrough-video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 40px auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: #000;
+}
+
+/* ----- Video player – large screen (full video visible) ----- */
 .walkthrough-video-player {
   width: 100%;
   height: auto;
-  display: block;        /* removes extra space below the video */
-  object-fit: cover;     /* optional: ensures the video fills the box without distortion */
-  object-position: center; /* keeps the main subject (the man) centered if cropping occurs */
+  display: block;
+  object-fit: contain;
+  object-position: center;
 }
 
 .video-placeholder {
@@ -338,9 +344,7 @@
   padding: 30px;
   border-radius: 12px;
   background: #f8f9fa;
-  /* Changed to solid background */
   border: 1px solid #e0e0e0;
-  /* Added border */
   transition: all 0.3s;
   color: #333333;
   display: flex;
@@ -441,15 +445,19 @@
     font-size: 2rem;
   }
 
+  /* ----- Video – small screen fix (keep typing man centred) ----- */
   .walkthrough-video {
-  width: 100%;
-  max-width: 800px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 40px auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  background: #000;
-}
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .walkthrough-video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
 }
 
 .showcase-page .feature-card {
@@ -461,6 +469,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
   padding: 30px !important;
   visibility: visible !important;
+  height: 100% !important;
 }
 
 .showcase-page .feature-card:hover {
@@ -468,4 +477,25 @@
   background: #ffffff !important;
   box-shadow: 0 8px 25px rgba(0, 122, 204, 0.15) !important;
   border-color: #007acc !important;
+}
+
+
+
+.showcase-page .feature-card {
+  opacity: 1;
+  transform: none;
+  animation: none;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  visibility: visible;
+  min-height: 320px !important;
+}
+
+.showcase-page .feature-card:hover {
+  transform: translateY(-5px);
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 122, 204, 0.15);
+  border-color: #007acc;
 }

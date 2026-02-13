@@ -107,11 +107,7 @@ const ShowcasePage: React.FC = () => {
       {/* Walkthrough */}
       <section className="walkthrough-section">
         <div className="walkthrough-container">
-          <h2 className="section-title">Complete Walkthrough</h2>
-          <p className="walkthrough-subtitle">
-            Watch how to go from an idea to a working React component in under 60 seconds.
-          </p>
-
+         
           <div className="walkthrough-video">
             <video
               src="/final1.mp4"
