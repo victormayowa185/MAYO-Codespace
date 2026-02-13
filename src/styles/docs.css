@@ -1229,11 +1229,42 @@
     margin: 10px 0;
     justify-content: center;
   }
+ .search-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    box-sizing: border-box !important;
+  }
 
+  .search-input {
+    padding: 16px 20px !important;
+    font-size: 1rem !important;
+    text-align: left; /* keep text left, but box is centered */
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .search-hint {
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
 
 }
 
 @media (max-width: 480px) {
+  .search-input {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .search-hint {
+    font-size: 0.8rem;
+  }
+
   .hero-title {
     font-size: 2rem;
   }
@@ -1289,7 +1320,10 @@
 
 /* Force correct border on feature cards */
 .feature-card {
-  border: 1px solid var(--border) !important;   /* or remove border entirely */
-  border-radius: 8px !important;                /* smaller, cleaner radius */
-  box-shadow: var(--shadow) !important;         /* optional: keep shadow */
+  border: 1px solid var(--border) !important;
+  /* or remove border entirely */
+  border-radius: 8px !important;
+  /* smaller, cleaner radius */
+  box-shadow: var(--shadow) !important;
+  /* optional: keep shadow */
 }

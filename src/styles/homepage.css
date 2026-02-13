@@ -426,14 +426,17 @@ body {
     padding: 4rem 1.5rem;
   }
 
-  .features-grid {
-    padding: 1rem !important;          /* reduced from huge values */
+  .features-grid .feature-card {
+    padding: 1.5rem !important;      /* equal on all sides */
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .section-subtitle {
-    width: 100%;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    width: 90%;
+    padding-left: 1rem;
+    padding-right: 2.5rem;
     box-sizing: border-box;
   }
 
@@ -451,6 +454,11 @@ body {
 
   .feature-card {
     transform: translateX(60px);
+  }
+  .features-grid {
+    width: 89%;
+    padding: 1rem !important;
+    justify-content: center;
   }
 
   @keyframes slideInFromRight {
