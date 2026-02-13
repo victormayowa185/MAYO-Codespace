@@ -30,14 +30,16 @@
   color: var(--text-light);
 }
 
-/* Workspace Container — FIXED HEIGHT */
+/* Workspace Container — FIXED: no broken width, uses full width of viewport */
 .workspace-container {
   display: flex;
-  height: calc(98vh - 70px); /* ← FIXED: now fills exactly below navbar */
+  height: calc(98vh - 70px);   /* space below navbar */
   margin-top: 70px;
   position: relative;
   overflow: hidden;
   font-family: 'Mulish', sans-serif;
+  width: 99%;                 /* always full width */
+  max-width: 100%;
 }
 
 .workspace-container.fullscreen {
@@ -45,17 +47,15 @@
   margin-top: 0;
 }
 
-/* ========== SPLIT LAYOUT ========== */
-
-/* Split Layout Container — FIXED PADDING */
+/* ========== SPLIT LAYOUT (DESKTOP) ========== */
 .split-layout {
   display: flex;
   height: 100%;
   width: 100%;
-  padding: 10px 20px 10px 9px; /* ← FIXED: consistent, no huge right padding */
+  padding: 10px 20px 10px 9px;
   position: relative;
   transition: all 0.3s ease;
-  gap: 8px; /* replaces resizer margin */
+  gap: 8px;   /* replaces resizer margin */
 }
 
 /* Single panel layout when preview is hidden */
@@ -72,7 +72,7 @@
   flex: 1;
 }
 
-/* Resizer handle */
+/* Resizer handle (vertical) */
 .resizer {
   width: 8px;
   height: 100%;
@@ -116,7 +116,7 @@
   background: var(--text-light);
 }
 
-/* Panels — base styles (desktop) */
+/* Panels — base styles */
 .code-editor-panel,
 .live-preview-panel {
   flex: 1 1 0;
@@ -131,27 +131,27 @@
 
 .dark-mode .code-editor-panel,
 .dark-mode .live-preview-panel {
-  background: #1e1e1e; /* kept as in original */
+  background: #1e1e1e;
   border-color: var(--border-dark);
   box-shadow: var(--shadow-dark);
 }
 
-/* ========== RESPONSIVE DESIGN ========== */
-/* FIXED: mobile layout now shows preview and shares space equally */
+/* ========== RESPONSIVE DESIGN – CLEAN & CONSISTENT ========== */
 
+/* Tablets & medium screens: switch to column, both panels full width */
 @media (max-width: 1024px) {
   .split-layout {
     flex-direction: column;
-    padding: 10px;           /* clean padding */
+    padding: 10px;
     gap: 8px;
   }
 
-  /* Override any inline widths – force both panels to 100% width */
+  /* Override inline widths – both panels take full width */
   .code-editor-panel,
   .live-preview-panel {
-    width: 100% !important;  /* ← FIXED: forces full width */
-    height: auto;            /* let flex control height */
-    flex: 1 1 0;            /* ← FIXED: both panels share equally */
+    width: 100% !important;
+    height: auto;
+    flex: 1 1 0;         /* both share available space equally */
     min-height: 0;
   }
 
@@ -168,31 +168,46 @@
     height: 2px;
   }
 
-  /* When preview is hidden on mobile, editor takes full height */
+  /* When preview is hidden, editor takes all height */
   .split-layout.single-panel .code-editor-panel {
     flex: 1 1 100%;
     height: 100% !important;
   }
 }
 
+/* Small phones: reduce padding, keep stacking */
 @media (max-width: 768px) {
   .split-layout {
     padding: 8px;
   }
 
-  /* Additional small‑screen refinements */
-  .code-editor-panel:not(:only-child),
-  .live-preview-panel {
-    height: auto;           /* overrides any fixed height */
+  .workspace-container {
+    height: calc(100vh - 70px); /* better use of space */
   }
 
-  .split-layout.single-panel .code-editor-panel {
-    height: 100vh !important;
+  .code-editor-panel,
+  .live-preview-panel {
+    border-radius: 8px;  /* slightly smaller radius */
   }
 }
 
-/* ========== KEYBOARD SHORTCUT FEEDBACK ========== */
-/* (unchanged, keep as is) */
+/* Very small devices (<= 480px): hide shortcut hints inside buttons to save space */
+@media (max-width: 480px) {
+  .shortcut-hint,
+  .control-shortcut {
+    display: none;
+  }
+
+  .keyboard-shortcut-overlay {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+}
+
+/* ========== KEYBOARD SHORTCUT FEEDBACK (unchanged) ========== */
 .keyboard-shortcut-overlay {
   position: fixed;
   top: 20px;
@@ -355,7 +370,6 @@
   pointer-events: none;
 }
 
-/* For control buttons specifically */
 .control-btn[title]:hover::after {
   bottom: 120%;
   left: 50%;
@@ -368,35 +382,15 @@
   transform: translateX(-50%);
 }
 
-/* ========== RESPONSIVE ADJUSTMENTS FOR SHORTCUTS ========== */
-@media (max-width: 1024px) {
-  .shortcut-hint {
-    display: none;
-  }
-  
-  .control-shortcut {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .keyboard-shortcut-overlay {
-    top: 10px;
-    right: 10px;
-    left: 10px;
-    justify-content: center;
-  }
-}
-
-/* Live status glow (blue) – unchanged */
+/* Live status glow */
 .status {
-  background: (linear-gradient5deg, green, black);
+  background: linear-gradient(5deg, rgb(0, 66, 128), black);
   padding: 4px 16px;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
   color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   animation: live-glow 0.2s infinite alternate;
   box-shadow: 0 0 10px rgba(0, 122, 204, 0.5);
   font-family: 'Mulish', sans-serif;

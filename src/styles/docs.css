@@ -1285,3 +1285,11 @@
   color: #666;
   font-size: 1.1rem;
 }
+
+
+/* Force correct border on feature cards */
+.feature-card {
+  border: 1px solid var(--border) !important;   /* or remove border entirely */
+  border-radius: 8px !important;                /* smaller, cleaner radius */
+  box-shadow: var(--shadow) !important;         /* optional: keep shadow */
+}
