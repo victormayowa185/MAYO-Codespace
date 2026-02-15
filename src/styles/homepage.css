@@ -214,8 +214,8 @@ body {
   text-align: center;
   font-size: 1.1rem;
   color: #666666;
-  width: 100%;
-  max-width: 900px;
+  width: 90% !important;
+  max-width: 900px !important;
   margin: 0 auto 4rem;
   line-height: 1.6;
   opacity: 0;
@@ -436,14 +436,14 @@ body {
   .section-subtitle {
     width: 90%;
     padding-left: 1rem;
-    padding-right: 2.5rem;
+    padding-right: 3.5rem !important;
     box-sizing: border-box;
   }
 
   .section-title {
     width: 100%;
     padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-right: 3.5rem !important;
     box-sizing: border-box;
     transform: translateX(40px);
   }
