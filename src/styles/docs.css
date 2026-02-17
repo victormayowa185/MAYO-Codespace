@@ -1229,7 +1229,8 @@
     margin: 10px 0;
     justify-content: center;
   }
- .search-container {
+
+  .search-container {
     width: 100% !important;
     max-width: 100% !important;
     margin-left: auto !important;
@@ -1242,7 +1243,8 @@
   .search-input {
     padding: 16px 20px !important;
     font-size: 1rem !important;
-    text-align: left; /* keep text left, but box is centered */
+    text-align: left;
+    /* keep text left, but box is centered */
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -1256,6 +1258,12 @@
 }
 
 @media (max-width: 480px) {
+
+  .code {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
   .search-input {
     padding: 14px 16px;
     font-size: 0.95rem;
@@ -1284,9 +1292,23 @@
     justify-content: center;
   }
 
-  .feature-demo {
-    width: 80%;
+  .section-title {
+    padding-right: 20px !important;
   }
+
+  .section-subtitle {
+    padding-right: 20px !important;
+  }
+
+  .demo-content {
+    max-width: 10px !important;
+  }
+
+
+  .editor-features .keyboard-shortcuts .shortcuts-grid {
+    padding-right: 90px !important;
+  }
+
 
 }
 
@@ -1318,7 +1340,6 @@
 }
 
 
-/* Force correct border on feature cards */
 .feature-card {
   border: 1px solid var(--border) !important;
   /* or remove border entirely */

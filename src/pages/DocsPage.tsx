@@ -552,7 +552,7 @@ const DocsPage: React.FC = () => {
               ref={setSectionRef(2)}
               className="docs-section animate-on-scroll"
             >
-              <div className="section-header">
+              <div className="section-header code">
                 <div className="section-icon"><MdCode /></div>
                 <h2 className="section-title">Monaco Editor Guide</h2>
                 <div className="section-subtitle">Professional editing experience</div>
