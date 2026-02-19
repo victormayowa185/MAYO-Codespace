@@ -1300,15 +1300,46 @@
     padding-right: 20px !important;
   }
 
-  .demo-content {
-    max-width: 10px !important;
+
+  .editor-features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* centers children horizontally */
+    /* space between demo and shortcuts */
+    width: 100%;
   }
 
 
-  .editor-features .keyboard-shortcuts .shortcuts-grid {
-    padding-right: 90px !important;
+  /* Make the demo container full width and centered */
+  .feature-demo {
+    width: 90%;
+    padding-left: 2px;
+    margin-right: 20px !important;
+    box-sizing: border-box;
   }
 
+
+  .demo-content pre {
+    white-space: pre-wrap;
+    /* wrap long lines */
+    word-break: break-word;
+    /* break words if needed */
+    margin: 0;
+    /* remove default margin */
+  }
+
+  .keyboard-shortcuts {
+    width: 100%;
+    margin: 0 auto !important;
+    /* centers the block horizontally */
+    box-sizing: border-box !important;
+  }
+
+  .keyboard-shortcuts {
+    width: 100% !important;
+    margin-left: -30px !important;
+  }
 
 }
 
