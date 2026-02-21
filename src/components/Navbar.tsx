@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
           </Link>
           <Link to="/docs" className={`nav-link ${isActive('/docs') ? 'active' : ''}`}>
             Documentation
-          </Link>
+          </Link> 
           <a
             href="https://github.com/victormayowa185"
             target="_blank"

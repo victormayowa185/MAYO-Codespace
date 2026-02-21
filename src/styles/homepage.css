@@ -83,6 +83,7 @@ body {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -203,7 +204,8 @@ body {
   font-size: 2.2rem;
   margin-bottom: 2rem;
   font-weight: 700;
-  color: #333333;               /* changed from yellow */
+  color: #333333;
+  /* changed from yellow */
   opacity: 0;
   transform: translateX(80px);
   animation: slideInFromRight 0.8s ease-out 0.2s forwards;
@@ -229,22 +231,29 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 1rem;               /* balanced, no !important spam */
+  padding: 1rem;
+  /* balanced, no !important spam */
 }
 
 /* ----- CARDS – PROFESSIONAL, VISIBLE, CLEAN ----- */
 .feature-card {
-  background: #ffffff;                     /* solid white background */
-  border: 1px solid #e0e0e0  !important;       /* visible light gray border */
-  border-radius: 12px;                   /* soft corners */
-  padding: 2rem 1.5rem;                 /* comfortable inner spacing */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* subtle depth */
+  background: #ffffff;
+  /* solid white background */
+  border: 1px solid #e0e0e0 !important;
+  /* visible light gray border */
+  border-radius: 12px;
+  /* soft corners */
+  padding: 2rem 1.5rem;
+  /* comfortable inner spacing */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* subtle depth */
   transition: all 0.3s ease;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;                           /* even spacing between elements */
+  gap: 16px;
+  /* even spacing between elements */
   opacity: 0;
   transform: translateX(120px);
   animation: slideInFromRight 0.4s ease-out forwards;
@@ -254,7 +263,8 @@ body {
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(0, 122, 204, 0.12);
-  border-color: #007acc;               /* brand blue border on hover */
+  border-color: #007acc;
+  /* brand blue border on hover */
 }
 
 /* ----- ICONS – LARGER, BRAND COLOR, AT THE TOP ----- */
@@ -263,7 +273,8 @@ body {
   height: 48px !important;
   color: #007acc;
   margin-bottom: 8px;
-  order: -1;                          /* forces icon to top even if HTML order is different */
+  order: -1;
+  /* forces icon to top even if HTML order is different */
 }
 
 /* ----- TITLE COLORS (keep your original) ----- */
@@ -321,6 +332,7 @@ body {
     opacity: 0;
     transform: translateX(120px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -379,6 +391,7 @@ body {
       opacity: 0;
       transform: translateX(80px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -427,7 +440,8 @@ body {
   }
 
   .features-grid .feature-card {
-    padding: 1.5rem !important;      /* equal on all sides */
+    padding: 1.5rem !important;
+    /* equal on all sides */
     overflow: hidden !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -455,6 +469,7 @@ body {
   .feature-card {
     transform: translateX(60px);
   }
+
   .features-grid {
     width: 89%;
     padding: 1rem !important;
@@ -466,6 +481,7 @@ body {
       opacity: 0;
       transform: translateX(60px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -474,17 +490,17 @@ body {
 }
 
 @media (max-width: 480px) {
-  .section-subtitle {
+  .features-section .section-subtitle {
     width: 100%;
     padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-right: 2.25rem !important;
     box-sizing: border-box;
   }
 
-  .section-title {
+  .features-section .section-title {
     width: 100%;
     padding-left: 1rem;
-    padding-right: 1rem;
+    padding-right: 2.25rem !important;
     box-sizing: border-box;
   }
 
